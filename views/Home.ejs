@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script src="script.js" defer></script>
+<link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+<style>
+    body { margin: 0; padding: 0; }
+    #map {
+        height: 50rem;
+        width: 100rem;
+        margin: 5rem auto;
+        border-radius: 10%;
+    }
+    .custom-marker {
+        width: 15px;
+        height: 15px;
+        background-color: red;
+        border-radius: 50%; /* Make it circular */
+        border: 2px solid white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+</style>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        scroll-behavior: smooth;
+        font-family: "Poppins",
+            sans-serif;
+    }
+    :root {
+        --bg-color:white;
+        --text-color: black;
+    }
+    html {
+        font-size: 60%;
+        overflow-x: hidden;
+    }
+    .header {
+        width: 100%;
+        padding: 9rem;
+        background-color: rgb(247, 246, 246);
+        backdrop-filter: blur(10px);
+        background-image: url("https://img.freepik.com/free-vector/gradient-connection-background_23-2150516350.jpg");
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 5;
+        animation: slidefromtop 1s ease forwards;
+        opacity: 0;
+        border-bottom: 1px solid rgb(220, 217, 217);
+        text-align: center;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        height : 100%;
+        width : 70rem;
+        margin: auto;
+        gap: 6rem;
+        justify-content: flex-start;
+    }
+    .button2 {
+        border: none;
+        color: white;
+        padding: 5px 20px;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 800;
+        margin-bottom: 2px;
+    }
+    @keyframes slidefromtop {
+        0% {opacity: 0;
+            transform: translateY(-100%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .logo {
+        font-size: 3rem;
+        color: white;
+        font-weight: 800;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+    .logo:hover {
+        transform: scale(1.1);
+    }
+    .logo span {
+        text-shadow: 0 0 25px white;
+        color : white;
+    }
+    .search_bar {
+        width : 65rem;
+        height : 4.6rem;
+        padding : 2.6rem;
+        border-radius: 2rem;
+    }
+    .navbar a {
+        font-size: 1.8rem;
+        color: white;
+        margin-left: 4rem;
+        font-weight: 500;
+        transition: 0.3s ease;
+        border-bottom: 3px solid transparent;
+    }
+    .navbar a:hover,
+    .navbar a.active {
+        color: white;
+        border-bottom: 3px solid white;
+    }
+    #menu-icon {
+        font-size: 3.6rem;
+        color: var(--main-color);
+        display: none;
+    }
+    section{
+        height: 100vh;
+        padding: 10rem 12% 10rem;
+    }
+    .Ride{
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content: center;
+        align-self: flex-end;
+        /* gap:50rem */
+    }
+    .home-content {
+        display: flex;
+        flex-direction: row;
+        /* align-items: baseline; */
+        /* text-align: left; */
+        justify-content: center;
+        align-items: center;
+        margin-top: 3rem;
+        animation: slidefromleft 1s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes slidefromleft {
+        0% {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    span {
+        color: var(--main-color);}
+
+        .logo span {
+            color: var(--main-color);
+        }
+        .home-content h3 {
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+            font-size: 3.5rem;
+        }
+        .home-content h1 {
+            font-size: 7rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            line-height: 1;
+        }
+        .Ride-text{
+        padding-right: 30rem;
+        }
+
+    .Ride-img img {
+        position: relative;
+        top: 1rem;
+        width: 52rem;
+        height : 40rem;
+        box-shadow: 0 0 5px black;
+        border-radius: 2rem;
+    }
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 50px var(--main-color);
+    }
+    .text-animation {
+        font-size: 34px;
+        font-weight: 600;
+        min-width: 280px;
+    }
+    .text-animation span {
+        position: relative;
+    }
+    .text-animation span::before {
+        content: "SAFE CITY.";
+        color: var(--main-color);
+        animation: words 20s infinite;
+    }
+    .text-animation span::after {
+        content: "";
+        background-color: var(--bg-color);
+        position: absolute;
+        width: calc(100% + 2px);
+        height: 90%;
+        border-left: 3px solid var(--bg-color);
+        right: -8px;
+        animation: cursor 0.7s infinite, typing 20s steps(22) infinite;
+    }
+    @keyframes cursor {
+        to {
+            border-left: 2px solid var(--main-color);
+        }
+    }
+    @keyframes typing {
+        10%,
+        15%,
+        30%,
+        35%,
+        50%,
+        55%,
+        70%,
+        75%,
+        90%,
+        95% {
+            width: 0;
+        }
+        5%,
+        20%,
+        25%,
+        40%,
+        45%,
+        60%,
+        65%,
+        80%,
+        85% {
+            width: calc(100% + 90px);
+        }
+    }
+    body {
+        height: 100vh;
+        background: var(--bg-color);
+        font-family: Helvetica, sans-serif;
+        color: rgb(19, 16, 16);
+        text-shadow: var(--main-color);
+        justify-content: center;
+        align-items: center;
+    }
+    .heading {
+        font-size: 8rem;
+        text-align: center;
+        margin: 2rem;
+    }
+    [type="submit"] {
+      font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+      width: 100%;
+      background:var(--main-color);
+      border-radius:5px;
+      border:0;
+      cursor:pointer;
+      color:white;
+      font-size:24px;
+      padding-top:10px;
+      padding-bottom:10px;
+      transition: all 0.3s;
+      margin-top:-4px;
+      font-weight:700;
+    }
+    [type="submit"]:hover { background:var(--main-color); }
+    .footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        padding: 40px 0;
+        background-color: grey;
+        height : 60rem;
+    }
+    .footer ul {
+        margin-top: 0;
+        padding: 0;
+        font-size: 15px;
+        line-height: 1.3;
+        margin-bottom: 0;
+        text-align: center;
+    }
+    .footer ul li a {
+        color:black;
+        border-bottom: 3px solid transparent;
+        transition: 0.3s ease-in-out;
+    }
+    footer ul li a:hover {
+        border-bottom: 3px solid var(--main-color);
+    }
+    
+    .footer ul li {
+        display: inline-block;
+        padding: 0 15px;
+    }
+    .footer .copyright {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 13px;
+        color: white;
+    }
+    @media (max-width:1264px) {
+        html {
+            font-size: 55%;
+        }
+    }
+    @media (max-width : 1153px) {
+        .text-animation span::before {
+            content: "SMART CITY";
+            color: var(--main-color);
+        }
+        .text-animation span::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+    }
+    @media (max-width:906px) {
+        header {
+            padding: 2rem 3%;
+        }
+        section {
+            padding: 10rem 3% 2rem;
+        }
+     .footer {
+            padding: 2rem 3%;
+        }
+    }
+    @media(max-width:895px) {
+        #menu-icon {
+            display: block;
+        }
+    
+        .navbar {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 50%;
+            padding: 1rem 3%;
+            background: rgba(189, 175, 175, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom-left-radius: 2rem;
+            border-left: 2px solid var(--main-color);
+            border-bottom: 2px solid var(--main-color);
+            display: none;
+        }
+        .navbar.active {
+            display: block;
+        }
+        .navbar a {
+            display: block;
+            font-size: 2rem;
+            margin: 3rem 0;
+            color: white;
+        }
+        .home {
+            flex-direction: column-reverse;
+            margin: 5rem 4rem;
+        }
+    
+        .home-content h3 {
+            font-size: 2.6rem;
+        }
+        .home-content h1 {
+            font-size: 8rem;
+            margin-top: 3rem;
+        }
+        .home-content p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .home-img img {
+            width: 56vw;
+        }
+
+    }
+    @media only screen and (max-width: 900px) {
+
+        .heading {
+            font-size: 5rem;
+        }
+    }
+    @media only screen and (max-width: 480px) {
+        .heading {
+            font-size:4rem;
+        }
+    }
+
+    .start_btn {
+        height : 6rem;
+        width : 20rem;
+        font-size: 1.8rem;
+        border-radius: 2rem;
+        padding : 2rem;
+        background-color: red;
+        color: white;
+    }
+    .secure_cite > a{
+            display: block;
+            font-size: 1.6rem;
+            color : green;
+            margin-top: 2rem;
+    }
+
+    .secure_cite2 > a {
+        margin-top : 4rem;
+        font-size: 3rem;
+        display: block;
+        color : green;
+        font-weight: 600;
+    }
+    .footer {
+        display: flex;
+        justify-content: space-evenly;
+        background-color: rgb(247, 247, 247);
+    }
+</style>
+</head>
+
+<body>
+<header class="header">
+        <div class="container">
+            <div>
+                <nav class="navbar">
+                    <a href="/home" class="active">Home</a>
+                    <a href="/service">Create section</a>
+                    <a href="/safety">Battery_Level</a>
+                    <a href="/login" class="button2">Login</a>
+                    <a href="/signup" class="button2">SignUp</a>
+                </nav>
+            </div>
+            <div><a href="/home" class="logo"><span>SAFE CITY</span></a></div>
+            <div>
+                <form action="/">
+                    <input type="text" class="search_bar" placeholder="search anything">
+                </form>
+            </div>
+        </div>
+        </header>
+
+
+    <!-- <section class="Home" id="Home">
+    </section> -->
+
+    <section class="Ride" id="Ride">
+        <div class="home-content">
+                <div class="Ride-text">
+                    <h1>Let's begin a <span id="name">journey</span></h1>
+            <h6 class="text-animation" style="font-size: 1.8rem; margin-bottom:2rem;margin-top:2rem;color:green;">Before starting please Signup/Login
+            </h6>
+            <br>
+            <button class="btn btn-primary start_btn"><a href="/service" style="text-decoration: none;color:white;">Start your Journey</a></button>
+                </div>
+
+                <div class="Ride-img">
+                    <img src="https://clickysoft.com/wp-content/uploads/2023/11/Title-5-Web-Application-Security-Best-Practices-1536x864-1.jpg">
+                </div>
+        </div>
+    </section>
+<section class="Ride" id="Ride">
+        <div class="home-content">
+                <div class="Ride-text">
+                    <h1>See Other <span id="name">User's</span></h1>
+            <h3 class="text-animation">with <span></span>
+            </h3>
+            <br>
+            <button class="btn btn-primary start_btn"><a href="/api/battery-status" style="text-decoration: none;color:white;">See users</a></button>
+                </div>
+                <div class="Ride-img" style="margin-top: none;">
+                    <img src="https://i.pinimg.com/564x/b5/12/68/b5126803cf115b044849b64ca565a4a7.jpg" style="width:34rem;height:34rem;border-radius: 50%;background-color:black;">
+                </div>
+        </div>
+    </section>
+
+    <!-- <section class="Safety" id="Safety">
+
+    </section>
+<section class=".Login" id="#Login">
+    </section> -->
+
+    <section>
+        <div style="font-size: 1.3rem;text-align:center;">
+            <p style="color:green;">Green : Show current Location</p>
+        <p style="color: red;">Red : Show famous places</p>
+    </div>
+        <div id="map"></div>
+    </section>
+
+
+    <footer class="footer">
+<div style="" class="secure_cite">
+<a href="#Safety" style="font-size: 2.9rem;color:red;text-decoration:underline;">Some website reference's for your Safety</a>
+<a href="https://www.darkreading.com/" target="_main">Visit Dark Reading</a></li>
+<a href="https://www.threatpost.com/" target="_main">Visit ThreatPost</a>
+<a href="https://thehackernews.com/" target="_main">Visit The Hacker News</a>
+<a href="https://www.bleepingcomputer.com/" target="_main">Visit BleepingComputer</a>
+<a href="https://securityboulevard.com/" target="_main">Visit Security BouleVard</a>
+<a href="https://news.sophos.com/en-us/category/serious-security/" target="_main">Visit Naked Security</a>
+<a href="https://www.csoonline.com/in/" target="_main">Visit CSO Online</a>
+<a href="https://www.securityweek.com/" target="_main">Visit Security Week</a>
+<a href="https://www.nist.gov/cybersecurity" target="_main">Visit NIST CyberSecurity</a>
+<a href="https://www.humansecurity.com/" target="_main">Visit Human Security</a>
+        </li>
+        </ul>
+</div>
+
+
+<div style="" class="secure_cite2">
+    <h1 style="color : red;font-size:3.2rem;margin-top:2rem;text-decoration:underline;">Authentication</h1>
+    <a href="/signup">Signup</a>
+    <a href="/login">Log In</a>
+    </div>
+
+    <div class="secure_cite3">
+        <img style="border-radius: 50%;"  src="data:image/jpeg;base64,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" alt="website_logo">
+        <p class="copyright" style="color:green;">
+            &copy devine debuggers | All Rights Reserved
+        </p>
+    </div>
+    </footer>
+
+    <script>
+        const searchBar = document.querySelector('form');
+const initialAction = searchBar.action; // Store the original form action
+
+searchBar.addEventListener('submit', (e) => {
+    // Prevent the form from submitting for demonstration
+    console.log(e);
+
+    const inputValue = e.srcElement[0].value.trim(); // Get and sanitize the input value
+    if (inputValue) {
+        return e.srcElement.action = initialAction +inputValue; // Append value to the action URL
+        console.log(`Form action set to: ${e.srcElement.action}`);
+    }
+
+    e.srcElement[0].value = ""; // Clear the input field
+    e.srcElement.action = initialAction; // Reset to the initial action
+});
+    </script>
+    <script>
+
+        const arr = [
+        {"longitude" : 77.7064,"latitude" :  28.9845},
+        {"longitude" : 77.7198,"latitude" :  28.9923},
+        {"longitude" : 77.7032, "latitude" : 28.9751},
+        {"longitude" : 77.7355, "latitude" : 28.9687},
+        {"longitude" : 77.6901, "latitude" : 28.9962},
+        {"longitude" : 77.7167,"latitude" :  28.9830},
+        {"longitude":  77.7274 ,"latitude" : 28.9778},
+        {"longitude" : 77.7029, "latitude" : 28.9894},
+        {"longitude" : 77.7113,"latitude" :  28.9736},
+        {"longitude" : 77.7400,"latitude" :  28.9900},
+];
+
+        mapboxgl.accessToken =  'pk.eyJ1Ijoic2FydGhhazEyMSIsImEiOiJjbHhsazF0bXIwMThhMmxzM2NoeXRmZWg5In0.JT53EZpovFVZDZah9ROOpw';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            projection: 'globe',
+            zoom: 10,
+            center: [77.6822, 28.9938]
+});
+const marker = new mapboxgl.Marker({color:"green"})
+.setLngLat([77.6822,28.9938])
+.addTo(map);
+
+
+arr.forEach(item => {
+    const Mark_Up = document.createElement("div");
+    Mark_Up.className = "custom-marker";
+    new mapboxgl.Marker(Mark_Up)
+    .setLngLat([item.longitude,item.latitude])
+    .addTo(map);
+});
+    </script>
+</body>
+</html>
