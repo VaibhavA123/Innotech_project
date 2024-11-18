@@ -186,12 +186,6 @@ app.post("/service",upload.single("image"), async (req,res) => {
 });
 
 
-
-app.get("/image",async (req,res) => {
-    let data = await User.find({});
-    res.render("image.ejs",{data});
-});
-
 //testing
 function getRandomNearbyCoordinates(latitude, longitude,batteryLevel, radius = 0.01) {
     // `radius` in degrees; approx. 0.01 degrees ~ 1.1 km
