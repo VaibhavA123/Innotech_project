@@ -21,6 +21,9 @@ const geocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const bodyParser = require('body-parser');
 const mapToken = 'pk.eyJ1Ijoic2FydGhhazEyMSIsImEiOiJjbHhsazF0bXIwMThhMmxzM2NoeXRmZWg5In0.JT53EZpovFVZDZah9ROOpw';
 const geocodingClient = geocoding({accessToken : mapToken});
+const RateLimit = require('express-rate-limit');
+
+
 
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
@@ -152,6 +155,14 @@ const Review = mongoose.model("Review",reviewSchema);
 
 
 const User = mongoose.model("User",userSchema);
+
+const rateLimit = RateLimit({
+    windowMS : 1 * 60 * 1000,
+    max : 5,
+    message : "To many requests,Please try after 1 minutes"
+});
+
+app.use(rateLimit);
 
 app.get("/home",(req,res) => {
     res.render("Home.ejs");

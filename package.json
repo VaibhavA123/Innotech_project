@@ -1,6 +1,6 @@
 {
-  "engines" : {
-    "node" : "20.12.1"
+  "engines": {
+    "node": "20.12.1"
   },
   "name": "innotech",
   "version": "1.0.0",
@@ -24,6 +24,7 @@
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
     "express": "^4.21.1",
+    "express-rate-limit": "^7.4.1",
     "express-session": "^1.18.1",
     "method-override": "^3.0.0",
     "mongoose": "^8.8.1",
