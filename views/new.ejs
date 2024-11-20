@@ -636,7 +636,11 @@ data.shift();
 });
 
 
-
+navigator.geolocation.getCurrentPosition(position => {
+    new mapboxgl.Marker({color:"red"})
+    .setLngLat([position.coords.longitude,position.coords.latitude])
+    .addTo(map);
+});
 
 
 
