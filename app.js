@@ -23,7 +23,6 @@ const mapToken = 'pk.eyJ1Ijoic2FydGhhazEyMSIsImEiOiJjbHhsazF0bXIwMThhMmxzM2NoeXR
 const geocodingClient = geocoding({accessToken : mapToken});
 const RateLimit = require('express-rate-limit');
 const helmet = require('helmet');
-const cors = require('cors');
 
 
 app.set('view engine','ejs');
