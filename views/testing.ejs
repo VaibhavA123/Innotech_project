@@ -490,7 +490,7 @@
                     const latitude = position.coords.latitude;
                     const longitude = position.coords.longitude;
                     function sendMessageToServer(message) {
-                        fetch("http://localhost:8080/api/battery-status", {
+                        fetch("https://innotech-project.onrender.com/api/battery-status", {
                             method: "POST",
                             headers: {
                                 'Content-Type': 'application/json'
