@@ -156,17 +156,6 @@ const Review = mongoose.model("Review",reviewSchema);
 
 const User = mongoose.model("User",userSchema);
 
-
-const rateLimit = RateLimit({
-    windowMS : 1 * 60 * 1000,
-    max : 15,
-    message : "To many requests,Please try after 1 minutes"
-});
-
-app.use(helmet());
-app.use(rateLimit);
-
-
 app.get("/home",(req,res) => {
     res.render("Home.ejs");
 });
