@@ -486,7 +486,10 @@
 <p style="color : red;font-size:1.4rem;">Red color shows more good places near your current location.</p>
 
     <div id="map" style="margin-top: 10rem; margin-bottom:20rem;"></div>
-<br><br><br><br><br><br><br><br><br><br>
+<br><br>
+<button class="btn btn-warning stop_service"><a href="/api/battery-status">Stop Service</a></button>
+
+    <br><br><br><br><br><br><br><br><br><br>
 
 
 
@@ -521,6 +524,7 @@
         </footer>
 
     <script>
+
         const searchBar = document.querySelector('form');
 const initialAction = searchBar.action; // Store the original form action
 
@@ -539,7 +543,12 @@ searchBar.addEventListener('submit', (e) => {
 });
     </script>
 
+
+
+
     <script>
+        const location = navigator.geolocation.getCurrentPosition();
+        console.log(location);
         const batteryDisplay = document.querySelector(".battery-level");
     const userId = Math.random() * 1000;
         if (navigator.getBattery) {
@@ -578,6 +587,17 @@ searchBar.addEventListener('submit', (e) => {
 
         const latitude_destination =  <%- JSON.stringify(latitude_destination) %>;
         const longitude_destination = <%- JSON.stringify(longitude_destination) %>;
+
+const service_btn = document.querySelector(".stop_service");
+service_btn.addEventListener("click",() => {
+    if(navigator.getBattery) {
+        navigator.getBattery().then((battery) => {
+            if(battery.level <= 0.3){
+            alert(`Please revisit this Page`);
+    }
+});
+    }
+})
 
 
         const arr23 = [];

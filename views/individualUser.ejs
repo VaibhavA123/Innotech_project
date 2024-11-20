@@ -619,6 +619,12 @@
 
 
 <script>
+    const curet = navigator.geolocation.getCurrentPosition(position => {
+    console.log(position);
+});
+console.log(curet);
+
+
 const searchBar = document.querySelector('form');
 const initialAction = searchBar.action; // Store the original form action
 
