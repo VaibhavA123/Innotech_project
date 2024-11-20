@@ -43,7 +43,7 @@
         .custom-marker2 {
             width: 18px;
             height: 18px;
-            background-color: blue;
+            background-color: red;
             border-radius: 40%; /* Make it circular */
             border: 2px solid white;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
@@ -637,7 +637,7 @@ data.shift();
 
 
 navigator.geolocation.getCurrentPosition(position => {
-    new mapboxgl.Marker({color:"red"})
+    new mapboxgl.Marker({color:"yellowgreen"})
     .setLngLat([position.coords.longitude,position.coords.latitude])
     .addTo(map);
 });
