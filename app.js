@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const passport = require('passport');
@@ -30,13 +31,27 @@ app.use(bodyParser.json());
 app.use(methodOverride("_method"));
 // app.use(bodyParser.urlencoded({ extended: true }));
 
+const store = MongoStore.create({
+    mongoUrl : process.env.MONGO_URL,
+    crypto : {
+        secret : process.env.secret,
+    },
+    touchAfter : 24 * 3600,
+});
+
+store.on("error",() => {
+    console.log("ERROR in MONGO SESSION STORE",err);
+});
+
 app.use(session({
-    secret : "myProjectSecret",
+    store,
+    secret : process.env.secret,
     resave : false,
     saveUninitialized : true,
     cookie : {
+        expires : Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge : 7 * 24 * 60 * 60 * 1000,
         httpOnly : true,
-        maxAge : 15 * 60 * 1500,
     },
 }));
 app.use(flash());
