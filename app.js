@@ -50,7 +50,7 @@ main()
 });
 
 async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/Innotech_1");
+    await mongoose.connect(process.env.MONGO_URL);
 }
 
 const loginSchema = new mongoose.Schema({
@@ -227,6 +227,47 @@ app.get("/api/battery-status/:_id",async (req,res) => {
 });
 
 
+app.get("/logout",(req,res,next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+        req.flash('success', 'You have been logged out successfully.');
+        res.redirect('/login');
+    });
+});
+
+app.delete("/delete/review/:_id", async (req, res) => {
+    try {
+        let { _id } = req.params;
+
+        // Find the user who has the review
+        let user = await User.findOne({ review: _id });
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+
+        // Remove the reference to the review from the user's document
+        user.review = undefined;
+        await user.save();
+
+        // Delete the review itself
+        let deletedReview = await Review.findByIdAndDelete(_id);
+        if (!deletedReview) {
+            return res.status(404).send("Review not found");
+        }
+        console.log("Deleted review:", deletedReview);
+
+        // Redirect to the user's battery status page
+        res.redirect(`/api/battery-status/${user._id}`);
+    } catch (error) {
+        console.error("Error deleting review:", error);
+        res.status(500).send("An error occurred while deleting the review");
+    }
+});
+
+
+
     app.get("/new", (req, res) => {
 
         console.log(req.query.latitude);
@@ -292,32 +333,21 @@ app.get("/safety",async (req,res) => {
     });
 
 
-    // app.post("/review/:_id", async (req,res) => {
-    //     let { _id } = req.params;
-    //     let { message,rating } = req.body;
-    //     let data = await new Review({message : message, rating : rating});
-    //     await data.save();
-    //     let data2 = await User.findById(_id);
-    //     console.log(data2);
-    // });
-
 
     app.post("/review/:_id", async (req, res) => {
         try {
-            const { _id } = req.params; // Extract user ID from URL parameters
-            const { message, rating } = req.body; // Extract review data from request body
-            // Create and save the review
+            const { _id } = req.params;
+            const { message, rating } = req.body;
             const review = new Review({ message, rating });
             await review.save();
-            // Find the user and associate the review with the user
             const user = await User.findById(_id);
             if (!user) {
                 return res.status(404).send("User not found");
             }
-            user.review = review._id; // Add the review's ID to the user's "review" field
+            user.review = review._id;
             await user.save();
             console.log("User with updated review:", user);
-            res.status(200).send("Review added and linked to user successfully");
+            res.redirect(`/api/battery-status/${user._id}`);
         } catch (err) {
             console.error("Error adding review:", err);
             res.status(500).send("An error occurred while adding the review");

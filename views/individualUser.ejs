@@ -402,6 +402,80 @@
 }
 </style>
 
+
+<style>
+    /* General box styling */
+.box {
+    margin: auto;
+    height: 60rem;
+    width: 100rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Adjust for natural vertical scroll */
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 5rem;
+    overflow-y: scroll;
+    scrollbar-color: black transparent;
+    scrollbar-width: thin;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar customization */
+.box::-webkit-scrollbar {
+    width: 10px;
+}
+.box::-webkit-scrollbar-track {
+    background: transparent;
+}
+.box::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+.box::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Card styling */
+.card {
+    width: 28rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Card text styling */
+.card-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.card-subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-size: 1.4rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+</style>
+
 <header class="header" style="margin-bottom: 10rem;">
         <div class="container">
             <div>
@@ -492,13 +566,16 @@
 </div>
 <br><br><br><br>
 
-    <div class="box" style="margin:auto;height:60rem;width:100rem;;display: flex;justify-content:center;align-items:center; flex-wrap:wrap;gap : 4rem; margin-top:160rem;overflow-y:scroll;scrollbar-color : black transparent; scrollbar-width:thin;">
+    <div class="box" style="margin-top:160rem;">
         <% for(let review of review_data) { %>
-    <div class="card" style="width: 30rem;padding:5rem;border-radius : 6rem;">
+    <div class="card">
         <div class="card-body">
-            <h5 class="card-title" style="font-size:2rem;margin-bottom:2rem;">Review Id : <%= review._id%></h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary" style="font-size:2rem;">Message : <%= review.message %></h6>
-            <p class="card-text">RAting : <%= review.rating %></p>
+            <h5 class="card-title">Review Id : <%= review._id%></h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary" >Message : <%= review.message %></h6>
+            <p class="card-text">Rating : <%= review.rating %></p>
+            <form action="/delete/review/<%= review._id %>?_method=DELETE" method="post">
+                <button class="btn btn-warning">Delete</button>
+            </form>
         </div>
     </div>
     <% } %>

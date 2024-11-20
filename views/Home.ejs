@@ -428,6 +428,14 @@
         background-color: rgb(247, 247, 247);
     }
 </style>
+
+<style>
+    @media (max-width : 640px) {
+        #map {
+            width : 4rem;
+        }
+    }
+</style>
 </head>
 
 <body>
@@ -442,7 +450,9 @@
                     <a href="/signup" class="button2">SignUp</a>
                 </nav>
             </div>
-            <div><a href="/home" class="logo"><span>SAFE CITY</span></a></div>
+            <div><a href="/home" class="logo"><span>SAFE CITY</span></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/logout" style="color: white; font-size:1.5rem;text-decoration:underline;">Logout</a></div>
             <div>
                 <form action="/">
                     <input type="text" class="search_bar" placeholder="search anything">
@@ -485,11 +495,6 @@
         </div>
     </section>
 
-    <!-- <section class="Safety" id="Safety">
-
-    </section>
-<section class=".Login" id="#Login">
-    </section> -->
 
     <section>
         <div style="font-size: 1.3rem;text-align:center;">
