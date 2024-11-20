@@ -22,7 +22,8 @@ const bodyParser = require('body-parser');
 const mapToken = 'pk.eyJ1Ijoic2FydGhhazEyMSIsImEiOiJjbHhsazF0bXIwMThhMmxzM2NoeXRmZWg5In0.JT53EZpovFVZDZah9ROOpw';
 const geocodingClient = geocoding({accessToken : mapToken});
 const RateLimit = require('express-rate-limit');
-
+const helmet = require('helmet');
+const cors = require('cors');
 
 
 app.set('view engine','ejs');
@@ -156,13 +157,17 @@ const Review = mongoose.model("Review",reviewSchema);
 
 const User = mongoose.model("User",userSchema);
 
+
 const rateLimit = RateLimit({
     windowMS : 1 * 60 * 1000,
-    max : 5,
+    max : 15,
     message : "To many requests,Please try after 1 minutes"
 });
 
+app.use(helmet());
+app.use(cors());
 app.use(rateLimit);
+
 
 app.get("/home",(req,res) => {
     res.render("Home.ejs");
