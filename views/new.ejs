@@ -482,11 +482,10 @@
 <br><br><br><br>
 
 <h1 class="battery-level"></h1>
-<p style="color : blue;font-size:1.4rem;">Blue color shows more good places near your destination.</p>
-<p style="color : red;font-size:1.4rem;">Red color shows more good places near your current location.</p>
-
+<p></p>
     <div id="map" style="margin-top: 10rem; margin-bottom:20rem;"></div>
-
+<br><br>
+<button style="padding:3rem; font-size:2rem;background-color:rgb(3, 3, 75);color:white;"><a href="/api/battery-status" style="text-decoration: none;color:white;">Stop Service</a></button>
     <br><br><br><br><br><br><br><br><br><br>
 
 
@@ -551,9 +550,10 @@ searchBar.addEventListener('submit', (e) => {
                 batteryDisplay.innerText = `Your current battery status = ${Math.round(battery.level * 100)}%`;
                 batteryDisplay.style.fontSize = "3rem";
                 batteryDisplay.style.textAlign = "center";
-
+                if(battery.level <=20) {
+                    alert("Please charge your device");
+                }
                 if (battery.level * 100 <= 15) {
-                    alert("Please charge your device.");
                     // Send POST request to the server
                     fetch('https://innotech-project.onrender.com/home2', {
                         method: 'POST',
