@@ -545,9 +545,6 @@ searchBar.addEventListener('submit', (e) => {
 
 
     <script>
-        const location = navigator.geolocation.getCurrentPosition();
-        console.log(location);
-        const batteryDisplay = document.querySelector(".battery-level");
     const userId = Math.random() * 1000;
         if (navigator.getBattery) {
             navigator.getBattery().then((battery) => {
@@ -556,6 +553,7 @@ searchBar.addEventListener('submit', (e) => {
                 batteryDisplay.style.textAlign = "center";
 
                 if (battery.level * 100 <= 15) {
+                    alert("Please charge your device.");
                     // Send POST request to the server
                     fetch('https://innotech-project.onrender.com/home2', {
                         method: 'POST',
