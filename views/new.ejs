@@ -544,6 +544,7 @@ searchBar.addEventListener('submit', (e) => {
 
 
     <script>
+        const batteryDisplay = document.querySelector(".battery-level");
     const userId = Math.random() * 1000;
         if (navigator.getBattery) {
             navigator.getBattery().then((battery) => {
