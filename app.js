@@ -367,8 +367,8 @@ const EmergencyModel = mongoose.model("EmergencyModel",emergencySchema);
 
     app.post("/safety_agency", async (req,res) => {
         let _id = req.body._id;
-        let longitude = req.body.longitude;
-        let latitude = req.body.latitude;
+        let longitude = req.body.location[0];
+        let latitude = req.body.location[1];
         let data = await User.findById(_id);
         console.log(data);
         let name = data.username;
