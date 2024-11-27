@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Page</title>
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
     <style>
         body { margin: 0; padding: 0; }
@@ -604,38 +606,37 @@
         View Mumbai on Map (using coordinates)
     </a>
 
-
-
-<footer class="footer">
-    <div style="" class="secure_cite">
-    <a href="#Safety" style="font-size: 2.9rem;color:red;text-decoration:underline;">Some website reference's for your Safety</a>
-    <a href="https://www.darkreading.com/" target="_main">Visit Dark Reading</a></li>
-    <a href="https://www.threatpost.com/" target="_main">Visit ThreatPost</a>
-    <a href="https://thehackernews.com/" target="_main">Visit The Hacker News</a>
-    <a href="https://www.bleepingcomputer.com/" target="_main">Visit BleepingComputer</a>
-    <a href="https://securityboulevard.com/" target="_main">Visit Security BouleVard</a>
-    <a href="https://news.sophos.com/en-us/category/serious-security/" target="_main">Visit Naked Security</a>
-    <a href="https://www.csoonline.com/in/" target="_main">Visit CSO Online</a>
-    <a href="https://www.securityweek.com/" target="_main">Visit Security Week</a>
-    <a href="https://www.nist.gov/cybersecurity" target="_main">Visit NIST CyberSecurity</a>
-    <a href="https://www.humansecurity.com/" target="_main">Visit Human Security</a>
-            </li>
-            </ul>
-    </div>
-
-    <div class="secure_cite2">
-        <h1 style="color : red;font-size:3.2rem;margin-top:2rem;text-decoration:underline;">Authentication</h1>
-        <a href="/signup">Signup</a>
-        <a href="/login">Log In</a>
+    <footer class="footer" style="background-color: rgb(1, 1, 33); color:white;">
+        <div style="" class="secure_cite">
+        <a href="#Safety" style="font-size: 2.9rem;text-decoration:underline;">Some website reference's for your Safety</a>
+        <a href="https://www.darkreading.com/" target="_main">Visit Dark Reading</a></li>
+        <a href="https://www.threatpost.com/" target="_main">Visit ThreatPost</a>
+        <a href="https://thehackernews.com/" target="_main">Visit The Hacker News</a>
+        <a href="https://www.bleepingcomputer.com/" target="_main">Visit BleepingComputer</a>
+        <a href="https://securityboulevard.com/" target="_main">Visit Security BouleVard</a>
+        <a href="https://news.sophos.com/en-us/category/serious-security/" target="_main">Visit Naked Security</a>
+        <a href="https://www.csoonline.com/in/" target="_main">Visit CSO Online</a>
+        <a href="https://www.securityweek.com/" target="_main">Visit Security Week</a>
+        <a href="https://www.nist.gov/cybersecurity" target="_main">Visit NIST CyberSecurity</a>
+        <a href="https://www.humansecurity.com/" target="_main">Visit Human Security</a>
+                </li>
+                </ul>
         </div>
-        <div class="secure_cite3">
-            <img style="border-radius: 50%;"  src="data:image/jpeg;base64,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" alt="website_logo">
-            <p class="copyright" style="color:green;">
-                &copy devine debuggers | All Rights Reserved
-            </p>
-        </div>
-        </footer>
-
+        
+        
+        <div style="" class="secure_cite2">
+            <h1 style="font-size:3.2rem;margin-top:2rem;text-decoration:underline;">Authentication</h1>
+            <a href="/signup">Signup</a>
+            <a href="/login">Log In</a>
+            </div>
+        
+            <div class="secure_cite3">
+                <img style="border-radius: 50%;"  src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAMAAzAMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAAAQcFBggCBAP/xAA+EAABAwICBwQGBwgDAAAAAAABAAIDBAUGEQcSITFBUWETIiNxCDJSgaHBFBVCQ5Gx0TNTYnKywuHwJDSS/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAUEAwEC/8QAIREBAAIDAAICAwEAAAAAAAAAAAIDAQQREjEhYRMiQSP/2gAMAwEAAhEDEQA/ALxREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERARFBQSi1DG2P7Tg+poqeuL5ZqmQBzIiM4Y+Mh6dOK2mlqIaqmjqKaVssMjQ5j2HMOB4hB+yIiAiIgIiICIiAiIgIiICIiAiIgIigoIL2hwYXDWO4Z7SvSpP0iquqoKnDk9FUS08o+k9+N2qfusty0K2aWsZW9oYLkKhgy2VMTX5+/eg6pzRc6R6ecSNGT7baXddSQf3r8azTniqdhbBT2ymcdzo4XEj/04hB0dJIyNjpJHta0DMuccgFWOPNLlsskctHY3srrhlq6zdscR5k8fcqPvmNcR30atzutRLH+7DtRv4BeMM4SveJqhsNpoZJG/amcC2Ng5lyDHXW4Vd1r5a24zvqKmV2s+Rx39B0W7aN9JdbhF7aOs1qq0uP7LPN0PVvTorZwXons1it8rbpHHcq2pjLJpHt7jWne1g4ee/wAlXePNDlytUktbhvXr6HMn6P8AfRdP4h13oLxw7ia0YjpWVFprYpwd7M8nt8271mAQuKoZ6611WtDJPSVDTvBLHBblatL2MLfqsdXRVcY4VUQd8RkUHUijNc7t08YkDe9bbSSOOpIP71auj654pvdELpiOGkooJW+BSwxOa5w9txc45dAg3RFjrtebfaIRNcatlOxztUF53noF9cE8c8UcsUjZI3tDmvbucDuyXncd487jvH7IoUr16IiICIiAiIgIiICIh3IKS9JZmdPYZMtz5m/Bn6LQtFOEKDGVzraG4SzRdnAHxviIzBz6qx/SSjzsVnl9mqc38WZ/Jar6O0mrjCrZ7VGT+BCDZpdAVAT4F7qgP442/Je6fQFbQf8Ak3qrd0YxoVxawA2qdYINEs2ibCdqe2QUJqpG/aqHl3wW7U1NDSxNhpoWRRNGxjGgAL9cwpQQNyFSiDB33Cdjv7SLrbIJ3H7wtyd+IWjXLQXhypk1qOqraMey1wePirUzRBVmG9DFps96ir6urlr2Q95kMrAG63Ann5Le8Q3yksNAaioIzyyjiG955BecS4hpMP0LqmqJc/dHC31pDyCpS9XasvVc6srpA55GTWD1Y28m/rxWPZ2sV45j2xbO1irHMe3u+Xirvdcaqsdt3MYPVjHILYMAYqmtVRFbajOSilcGxgbTETy6LTw1znBrGlzicg0DMk8laeBMFCgEdzurA6rIzihO6EHiebvyWDW/LZZ5YT9b8tlvljLfW8PJe15Gwr0ra6IiICIiAiIgIiICHciIKn9IyEyYRoZBujrmk+RY4KvNAk3Z4/a0HZJTSD8launyIP0ezuyzLKiIjp3svmqc0LTiDSFbs9naNez8Qg6cudwpbZRvqq2VsUUYzLnf7vVZ1OkitN3bLDE36vadsRHecOefA9FmdKdnrq2lgrqZ75IaUHtIBt35d8DiQqr4ZZDzCmbd9kJcwlbuzZCfjj4w6HtlwprlRx1dJIJIpBmCF9gOao3BuJpsO1w1y59BKfGjHA+0Ov5q66Oqiq6dk9O8SRSDWa5u4ha9e/Fsfts1tjF0ft9CKAdijWWhpCVhcTYhpbBRGeofnK7ZFEDteV4xTiSlw/RmWY687wRDCDtefkOqpa63Osu9a+rr5deV2wD7LB7LRwCx7Oz+PHMe2La28VY8ce03m61V4r31lY8ueT3W8GDkF8jGue9rI2lz3HVDWjMk8lDGOke2ONpc9xDWtaMyTyVs4HwY20htwuTWvrnNzYzhCD81NqqnsT7lLppnsT7l5wJgtttay4XNodWkZsjO0Q/5W8huSwl1xPQW29W2zPd2lfXy6scTD6jQCS53IbFnVarqjXjmF2uqNeOYFKIujoIiICIiAiIgIiICIiDTdMEAn0d3gEZ6kYePcQVzlo7qGUmOLLM85NFU1uf82z5rqXGlGbhhO70jRm6akka0ddU5Lj+3VJoa+lq2gl0EzJQOeqQfkg7Wc3Xbk7cqo0gYQNukfdLez/iOOc0bR+zPMdFatLI2enilac2vYHA9MlM0TZWOZINZjgQ5pGwhcbqY2x5lxvojdHmXOHXJbbgXFrrJUNo61xNBId/7o8/JRjrCb7HU/S6Npdb5Dw+6cdw8uS1PhlwUb99eaF/pr2fDo6KRksbXxuDmOGYI4rC4rxLS4fo9d/iVDx4UQO13XyVbYXxvVWGifRyRGqhAPYBz8jGeX8q165V9Vc6ySrrZTJNJx4AchyC3Wb2PD49qFm/Hw/X2m6XGqutZJV1spfI/Z0aOQXzxxyTSNjhY6SR7tVrWjMkpFFJNKyGBhklecmMbtLirdwPg2OzMbW1wbJcHt8xEOQ69VippnfLuWGmmexPuXjA+DWWiIVtwa2SvcO6N4iB4Dr1X0aSsXDBuHjXMi7SpleIoWk5DWIO0+WS2zLIZZqk/SSrtWGy28fafJM7pkAB/UVarrjXjmF6uuNcfHDV9EdZVX3SlT19xmdPUFksr3u8tmXIbV0uudPR1ozLi6tq9XuwUhbnyLnDL+krotdH2IiICIiAiIgIiICIiAiIg8StD43NP2gQuNcS2w2bENwt7m5CnnexrSdurn3fhkuzSue/SDw66kvdNfIWeDVt7OUjg9v6j8kFraKrq27YCtEwcXPigFPITv1md35A+9baufvR+xSKC7VGHatwEVb4lOSdglA2j3j4jqugRtQfPWUsNXTyU9REJIZGlrmkZghUrjHDMmHKwage+hlPhSHbq/wAJPNXlkvjulvprjSS0tYwSQyN1SD/u9Z9iiNsftm2dfF0ftzx5hfpDFJUTRwU8T5ZZDqtYwZknyWbvmFK+1XZtDFDJUMlPgPY094deXVWPgrCEVig+kVOrLcJB3nAbIx7I/VS6tSc5cz/EmnTnKeY5/j8sE4Oiskf0usAkr3jbyjHIdeq3EDIb1AaMl6CswrjCPjFcrrjXHxiLmPTrdG3HHs0Ebi5lDAyn6B21zv6svcug8XX+nwxh+sutVkRAzw2E5do8+q33lcivdVXm6F5JlrKybM83Pcf8r7fa9PRztRp7FcLm9mRq5xG082s/yXK4FhcH2VmH8OUFsZvgiAeebuKzSAiIgIiICIiAiIgIiICIiAsHjLDsGJsPVVqnA8Rucbz9h43H8VnFB3IOL6mCusN5fDKHwV1FLkeBY5p2LqDRpjWnxfY2yOc1lwgAZUxZ7c/aHQrWtMuj036m+u7RFrXOBvjRtH/YYP7hwVF4fvtxwzdmXC3SOhqI3ZOYdzxxa4ckHZIQrTMBaQrZi6mEbHtp7ixviUrztPVvMLc+KCNRueeQUgAKckQF+ckjY2ufI5rWNBJc45AL862rgoaaSpq5mQwRtLnyPOQAXP8ApR0qOvjJLTYHvioCSJZ9zpug5N/NBjdMWORie6/V9vkJtlG4hrhulfuLvLgFmNAuEDXXF2I62LKmpiWU2sPXk4keS0nAODa3GN3ZSwAx0kZBqajLZG3kObjwXVdpttLaLfT2+giEVPTsDI2Abhz8yg+zJSiICIiAiIgIiICIiAiIgIiICIiDy4BVRpQ0Ux3x0l3w81kVxO2WA7GT9Ryd+atlEHFU0VfZrgY5WT0dbA7cc2OYVZGFNNd6tTWU97hbc6cDLtA7UlaPPcfersxXg6yYqg7O7UjXSgdydnde3yKpjEmg+70JdLYaplfDnsjk7kgH5FBZNq0wYOroC+Wvkontbm6OpicD5AjMFa9iHTraqdj48P0M9bKR3ZZ/DjHu9Y+WzzVKXDDV8t0whrbRWxSFwA8FxBPIEbCs3YNGWKr25vZW19LC7b2tV3AB5b/ggx+KsZ33FMxddq0uiHqwR92NvuHzWTwDo7u2L52Pax1LbWkdpVPado5MHE/BWvg/QrabS9lTfJfrKobtEeWrE33cVaMEUcETIoY2xxsGTWNGQaOgQY7DmH7fhu1x2+1wdnEzaTvc88yeJWVyHJSiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIg8uaDvAPmF6CIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiHYgIozTMIJRRmFKAijNSgIiICKM0zQSijWGeSZhBKKC4DehcBvQSigEE7FKAiIgIiIP/Z" alt="website_logo">
+                <p class="copyright" style="color:green;">
+                    &copy devine debuggers | All Rights Reserved
+                </p>
+            </div>
+            </footer>
     <script>
 
         const searchBar = document.querySelector('form');
@@ -767,10 +768,9 @@ navigator.geolocation.getCurrentPosition(position => {
 });
 
 
-
-
-
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 </html>
