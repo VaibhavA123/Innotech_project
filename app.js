@@ -378,7 +378,7 @@ const EmergencyModel = mongoose.model("EmergencyModel",emergencySchema);
 
     app.get("/emergency",async (req,res) => {
         let data = await EmergencyModel.find({});
-        res.send(data);
+        res.render("emergency.ejs",{data});
     });
 
 
