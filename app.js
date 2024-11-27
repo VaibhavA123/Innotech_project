@@ -358,8 +358,8 @@ const emergencySchema = new mongoose.Schema({
         required : true,
     },
     location : {
-        longitude : String,
-        latitude : String,
+        longitude : {type : String},
+        latitude : {type : String},
     },
 });
 
