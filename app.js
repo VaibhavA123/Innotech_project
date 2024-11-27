@@ -106,7 +106,6 @@ app.get("/signup",(req,res) => {
     res.render("SignupPage.ejs",{data});
 });
 
-const Login = mongoose.model("Login",loginSchema);
 
 const reviewSchema = new mongoose.Schema({
     message : {
@@ -114,6 +113,16 @@ const reviewSchema = new mongoose.Schema({
     },
     rating : {
         type : Number
+    },
+});
+const ownerSchema = new mongoose.Schema({
+    username : {
+        type : String,
+        required : true,
+    },
+    email : {
+        type : String,
+        required : true,
     },
 });
 
@@ -158,9 +167,16 @@ const userSchema = new mongoose.Schema({
     review : {
         type: mongoose.Schema.Types.ObjectId,
         ref : "Review"
-    }
+    },
+    owner : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Owner"
+    },
 });
 
+
+const Owner = mongoose.model("Owner",ownerSchema);
+const Login = mongoose.model("Login",loginSchema);
 const Review = mongoose.model("Review",reviewSchema);
 const User = mongoose.model("User",userSchema);
 
@@ -233,8 +249,13 @@ function getRandomNearbyCoordinates(latitude, longitude,batteryLevel, radius = 0
 
 
 app.get("/api/battery-status",async (req,res) => {
-    let data = await User.find({});;
-    res.render("testing.ejs",{data});
+    if(!req.isAuthenticated()) {
+        req.session.redirectUrl = req.originalUrl;
+        res.redirect("/login");
+    }
+    let data = await User.find({});
+    const message = req.flash("message");
+    res.render("testing.ejs",{data,message});
 });
 
 const nearbyCoordinates = [];
@@ -254,15 +275,18 @@ app.post('/api/battery-status',async (req, res) => {
 
 
 app.get("/api/battery-status/:_id",async (req,res) => {
-    if(!req.isAuthenticated()) {
-        req.session.redirectUrl = req.originalUrl;
-        res.redirect("/login");
-    }
+    console.log(req.user);
     let { _id } = req.params;
     let review_data = await Review.find({});
-    let data = await User.findById({_id : _id}).populate("review");
+    let ownerData = await Owner.find({});
+    let data = await User.findById({_id : _id}).populate("review").populate("owner");
     console.log(data);
-    res.render("individualUser.ejs",{list : data,review_data});
+    if(data.email == req.user.email) {
+    res.render("individualUser.ejs",{list : data,review_data,ownerData});
+}else {
+    req.flash("message","You don't have permission to access others details.");
+    res.redirect("/api/battery-status");
+}
 });
 
 

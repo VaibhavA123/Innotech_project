@@ -565,7 +565,12 @@ line-height: 1.6;
             </header>
 
 
-
+        <% if(message.length != 0) { %>
+            <div class="alert alert-warning alert-dismissible fade show" style="width:60rem;margin:8rem auto;" role="alert">
+                <h1><%= message[0] %></h1>
+                <button type="button" class="btn-close" style="font-size: 2rem;" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
 
 
 
