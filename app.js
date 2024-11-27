@@ -333,8 +333,8 @@ app.delete("/delete/review/:_id", async (req, res) => {
 
 
 
-    app.get("/new", (req, res) => {
-
+    app.get("/api/battery-status/new/:_id", (req, res) => {
+        let { _id } = req.params;
         console.log(req.query.latitude);
         const latitude_destination = req.query.latitude;
         const longitude_destination = req.query.longitude;
@@ -342,7 +342,7 @@ app.delete("/delete/review/:_id", async (req, res) => {
         if (nearbyCoordinates.length > 0) {
             let latitude = nearbyCoordinates[0].latitude;
             let longitude = nearbyCoordinates[0].longitude;
-            res.render("new.ejs", { nearbyCoordinates, latitude, longitude,latitude_destination,longitude_destination });
+            res.render("new.ejs", { nearbyCoordinates, latitude, longitude,latitude_destination,longitude_destination,_id });
         } else {
             res.status(400).send("No coordinates available");
         }
