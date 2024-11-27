@@ -77,7 +77,9 @@
                 <h1><%= list.email %></h1>
                 <p><%= list.message %></p>
                 <p>latitude : <%= list.location.latitude %>, longitude : <%= list.location.longitude %></p>
-                <button>Delete</button>
+                <form action="/emergency/<%=list._id %>?_method=DELETE" method="post">
+                    <button>Delete</button>
+                </form>
             </div>
     <% } %>
     </div>

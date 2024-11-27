@@ -381,6 +381,12 @@ const EmergencyModel = mongoose.model("EmergencyModel",emergencySchema);
         res.render("emergency.ejs",{data});
     });
 
+    app.delete("/emergency/:_id",async(req,res) => {
+        let { _id } = req.params;
+        let data = await EmergencyModel.findByIdAndDelete(_id);
+        console.log(data);
+        res.redirect("/emergency");
+    });
 
     const userBatteryStatusSchema = new mongoose.Schema({
         userID : {
