@@ -7,6 +7,51 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
     <style>
+        body { margin: 0; padding: 0; }
+        #map {
+            height: 30rem;
+            width: 30rem;
+            margin: 5rem auto;
+            border-radius: 10%;
+        }
+        .custom-marker {
+            width: 15px;
+            height: 15px;
+            background-color: red;
+            border-radius: 50%; /* Make it circular */
+            border: 2px solid white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+
+    <style>
+        body { margin: 0; padding: 0; }
+        #map {
+            height: 50rem;
+            width: 100rem;
+            margin: 5rem auto;
+            border-radius: 10%;
+        }
+        .custom-marker {
+            width: 15px;
+            height: 15px;
+            background-color: red;
+            border-radius: 50%; /* Make it circular */
+            border: 2px solid white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-marker2 {
+            width: 18px;
+            height: 18px;
+            background-color: red;
+            border-radius: 40%; /* Make it circular */
+            border: 2px solid white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -511,9 +556,13 @@
     color: #555;
     line-height: 1.6;
     }
+    
     </style>
+    
     <body style="background-color: rgb(1, 1, 28);color:white;">
-<header class="header">
+    
+    
+            <header class="header">
                 <div class="container">
                     <div>
                         <nav class="navbar">
@@ -542,10 +591,10 @@
                 </header>
 <br><br><br><br>
 
-<h1 class="battery-level"></h1>
+<h1 class="battery-level" style="margin-top: 10rem;"></h1>
 <p></p>
 
-    <div id="map" style="margin-top: 10rem; margin-bottom:20rem;"></div>
+    <div id="map" style="margin-top: 15rem; margin-bottom:20rem;"></div>
 <br><br>
 <button style="padding:3rem; font-size:2rem;background-color:rgb(3, 3, 75);color:white;border-radius:2rem;margin-left:auto;"><a href="/api/battery-status" style="text-decoration: none;color:white;">Stop Service</a></button>
 <button style="padding:3rem; font-size:2rem;background-color:rgb(3, 3, 75);color:white;border-radius:2rem;margin-left:auto;"><a href="/api/battery-status/emergency" style="text-decoration: none;color:white;">Emergency</a></button>
