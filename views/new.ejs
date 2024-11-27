@@ -600,7 +600,7 @@
 
 <br><br>
 <button style="padding:3rem; font-size:2rem;background-color:rgb(3, 3, 75);color:white;border-radius:2rem;margin-left:auto;"><a href="/api/battery-status/<%= _id %>"  style="text-decoration: none;color:white;">Stop Service</a></button>
-<button class="emergency"  style="padding:3rem; font-size:2rem;background-color:rgb(3, 3, 75);color:white;border-radius:2rem;margin-left:auto;"><a href="/api/battery-status/<%= _id %>" class="emergency" style="text-decoration: none;color:white;">Emergency</a></button>
+<button class="emergency"  style="padding:3rem; font-size:2rem;background-color:rgb(3, 3, 75);color:white;border-radius:2rem;margin-left:auto;"><a class="emergency" style="text-decoration: none;color:white;">Emergency</a></button>
     <br><br><br><br><br><br><br><br><br><br>
 
 
@@ -644,17 +644,7 @@
                                 'Content-Type' : 'application/json',
                             },
                             body : JSON.stringify({_id : _id,location : [position.coords.longitude,position.coords.latitude]})
-                        }).then(response => {
-                            if (response.ok) {
-                                alert("Emergency reported successfully!");
-                            } else {
-                                alert("Failed to report the emergency. Please try again.");
-                            }
                         })
-                        .catch(error => {
-                            console.error("Error reporting emergency:", error);
-                            alert("An error occurred. Please try again.");
-                        });
             })
                     })
             </script>
