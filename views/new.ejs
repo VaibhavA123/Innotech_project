@@ -635,6 +635,7 @@
 
 
             <script>
+                const _id = <%-  JSON.stringify(_id) %>;
                 const emergency = document.querySelector(".emergency");
                 emergency.addEventListener("click", () => {
                     navigator.geolocation.getCurrentPosition(position => {
