@@ -597,6 +597,7 @@
 <p></p>
 
     <div id="map" style="margin-top: 15rem; margin-bottom:20rem;"></div>
+
 <br><br>
 <button style="padding:3rem; font-size:2rem;background-color:rgb(3, 3, 75);color:white;border-radius:2rem;margin-left:auto;"><a href="/api/battery-status" style="text-decoration: none;color:white;">Stop Service</a></button>
 <button style="padding:3rem; font-size:2rem;background-color:rgb(3, 3, 75);color:white;border-radius:2rem;margin-left:auto;"><a href="/api/battery-status/<%= _id %>" style="text-decoration: none;color:white;">Emergency</a></button>
@@ -698,9 +699,7 @@ searchBar.addEventListener('submit', (e) => {
         const longitude_destination = <%- JSON.stringify(longitude_destination) %>;
 
 
-        const anchor = document.querySelector(".destination_two");
-        anchor.href = `/?api=1&query=${longitude_destination},${latitude_destination}`
-        anchor.href = `https://www.google.com/maps/search/?api=1&query=${longitude},${latitude}`
+
         const arr23 = [];
         arr23.length = 0;
         for(let i=0;i<6;i++) {
