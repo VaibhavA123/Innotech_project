@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/home2" method="post">
+    <input type="text" placeholder="destination" name="destination">
+    <button>Submit</button>
+    <a href="https://www.google.com/maps/search"></a>
+</form>
+<script>
+    const anchor = document.querySelector("a");
+    console.dir(anchor.href);
+anchor.href = "/?api=1&query=19.0760,72.8777";
+    console.log(anchor.href);
+</script>
+</body>
+</html>

@@ -23,6 +23,7 @@ const mapToken = 'pk.eyJ1Ijoic2FydGhhazEyMSIsImEiOiJjbHhsazF0bXIwMThhMmxzM2NoeXR
 const geocodingClient = geocoding({accessToken : mapToken});
 const RateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const { type } = require('os');
 
 
 app.set('view engine','ejs');
@@ -120,6 +121,7 @@ const userSchema = new mongoose.Schema({
     username : {
         type : String,
         required : true,
+        unique : true,
     },
     email : {
         type : String,
@@ -133,7 +135,15 @@ const userSchema = new mongoose.Schema({
         url : String,
         filename: String
     },
-    mobile_No : {
+    mobile_No1 : {
+        type : Number,
+        required : true,
+    },
+    mobile_No2 : {
+        type : Number,
+        required : true,
+    },
+    mobile_No3 : {
         type : Number,
         required : true,
     },
@@ -152,55 +162,60 @@ const userSchema = new mongoose.Schema({
 });
 
 const Review = mongoose.model("Review",reviewSchema);
-
-
 const User = mongoose.model("User",userSchema);
+
 
 app.get("/home",(req,res) => {
     res.render("Home.ejs");
 });
 
+
 app.post("/signup", async (req,res) => {
     let { username, email, password } = req.body;
     let data = await new Signup({username :username, email : email});
     let newData = await Signup.register(data,password);
-    // await newData.save();
-    res.redirect("/home");
+    await newData.save();
+    req.logIn(newData,(error) => {
+            if(error) {
+                next(error);
+            }
+            res.redirect("/home");
+    });
 });
+
+const saveRedirectUrl = (req,res,next) => {
+    if(req.session.redirectUrl) {
+        res.locals.redirectUrl = req.session.redirectUrl;
+    }
+    next();
+}
+
 
 app.get("/login",(req,res) => {
     req.flash("user","User doesn't exist. Please signup first!");
     res.render("LoginPage.ejs");
 });
-app.post("/login",passport.authenticate("local",{failureFlash:true,failureRedirect:'/signup'}),async (req,res) => {
+app.post("/login",saveRedirectUrl,passport.authenticate("local",{failureFlash:true,failureRedirect:'/login'}),async (req,res) => {
     let { username, password } = req.body;
-    if(!req.isAuthenticated()) {
-        return res.redirect("/login");
-    }
     let data = await new Login({username : username, password : password});
     await data.save();
-    res.redirect("/home");
+    console.log(res.locals.redirectUrl);
+    res.redirect(res.locals.redirectUrl);
 });
 
 
-function isAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) return next();
-    req.flash("error", "Please log in first.");
-    res.redirect("/login");
-}
-
-app.get("/service", isAuthenticated ,(req,res) => {
+app.get("/service",(req,res) => {
     res.render("userService.ejs");
 });
 
 
 
 app.post("/service",upload.single("image"), async (req,res) => {
-    let {username,email,Vehicle_No,mobile_No,current_location,destination} = req.body;
-        let { path,filename } = req.file;
-        let data = await new User({current_location : current_location,destination : destination,username : username, email : email, Vehicle_No : Vehicle_No, mobile_No : mobile_No, image : {url : path, filename : filename}});
-        await data.save();
-        res.redirect("/api/battery-status");
+    let {username,email,Vehicle_No,mobile_No1,mobile_No2,mobile_No3,current_location,destination} = req.body;
+    let { path,filename } = req.file;
+    let data = await new User({current_location : current_location,destination : destination,username : username, email : email, Vehicle_No : Vehicle_No, mobile_No1 : mobile_No1,mobile_No2:mobile_No2,mobile_No3:mobile_No3, image : {url : path, filename : filename}});
+    await data.save();
+    res.redirect("/api/battery-status");
 });
 
 
@@ -216,8 +231,9 @@ function getRandomNearbyCoordinates(latitude, longitude,batteryLevel, radius = 0
     return { latitude: randomLat, longitude: randomLng,batteryLevel : batteryLevel };
 }
 
-app.get("/api/battery-status", async (req,res) => {
-    let data = await User.find({});
+
+app.get("/api/battery-status",async (req,res) => {
+    let data = await User.find({});;
     res.render("testing.ejs",{data});
 });
 
@@ -236,7 +252,12 @@ app.post('/api/battery-status',async (req, res) => {
     res.json({nearbyCoordinates});
 });
 
+
 app.get("/api/battery-status/:_id",async (req,res) => {
+    if(!req.isAuthenticated()) {
+        req.session.redirectUrl = req.originalUrl;
+        res.redirect("/login");
+    }
     let { _id } = req.params;
     let review_data = await Review.find({});
     let data = await User.findById({_id : _id}).populate("review");
@@ -251,9 +272,11 @@ app.get("/logout",(req,res,next) => {
             return next(err);
         }
         req.flash('success', 'You have been logged out successfully.');
-        res.redirect('/login');
+        res.redirect('/home');
     });
 });
+
+
 
 app.delete("/delete/review/:_id", async (req, res) => {
     try {

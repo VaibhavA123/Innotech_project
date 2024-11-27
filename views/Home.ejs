@@ -9,7 +9,7 @@
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
 <style>
-    body { margin: 0; padding: 0; }
+    body { margin: 0; padding: 0;}
     #map {
         height: 50rem;
         width: 100rem;
@@ -47,28 +47,30 @@
     }
     .header {
         width: 100%;
-        padding: 9rem;
-        background-color: rgb(247, 246, 246);
+        padding: 6rem;
+        background-color: rgb(1, 6, 30);
         backdrop-filter: blur(10px);
-        background-image: url("https://static.vecteezy.com/system/resources/thumbnails/047/008/756/small_2x/map-lines-location-free-vector.jpg");
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 5;
         animation: slidefromtop 1s ease forwards;
-        opacity: 0;
-        border-bottom: 1px solid rgb(220, 217, 217);
+        opacity: 2;
         text-align: center;
+        border-bottom: 1px solid whitesmoke;
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFkdgMZsc3e1EJS1WN34RGr0TO905c0ohMew&s');
+        box-sizing: border-box;
     }
     .container {
         display: flex;
         flex-direction: column;
         height : 100%;
-        width : 70rem;
-        margin: auto;
+        width : 100%;
         gap: 6rem;
         justify-content: flex-start;
+        box-sizing: border-box;
     }
+
     .button2 {
         border: none;
         color: white;
@@ -109,12 +111,16 @@
         border-radius: 2rem;
     }
     .navbar a {
-        font-size: 1.8rem;
+        font-size: 2.8rem;
         color: white;
-        margin-left: 4rem;
+        margin-left: 2rem;
         font-weight: 500;
         transition: 0.3s ease;
         border-bottom: 3px solid transparent;
+        cursor: pointer;
+    }
+    .navbar li {
+        margin-right : 24rem;
     }
     .navbar a:hover,
     .navbar a.active {
@@ -411,7 +417,7 @@
     .secure_cite > a{
             display: block;
             font-size: 1.6rem;
-            color : green;
+            color : white;
             margin-top: 2rem;
     }
 
@@ -419,7 +425,7 @@
         margin-top : 4rem;
         font-size: 3rem;
         display: block;
-        color : green;
+        color : white;
         font-weight: 600;
     }
     .footer {
@@ -534,19 +540,26 @@
     </style>
 
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
 
 </head>
 
-<body>
+<body style="background-color: rgb(1, 1, 28);color:white;">
 <header class="header">
         <div class="container">
             <div>
                 <nav class="navbar">
-                    <a href="/home" class="active" style="color:black;">Home</a>
-                    <a href="/service" style="color: black;">Create section</a>
-                    <a href="/safety" style="color:black;">Battery_Level</a>
-                    <a href="/login" class="button2" style="color: black;">Login</a>
-                    <a href="/signup" class="button2" style="color: black;">SignUp</a>
+                    <a href="/home" class="active" style="color: black; font-weight:600;font-size:3rem;padding:0.2rem;">Home</a>
+                    <a href="/service" style="color: black; font-weight:600;font-size:3rem;">Create section</a>
+                    <a href="/safety" style="color: black; font-weight:600;font-size:3rem;">Battery_Level</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color:black;" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">User</a>
+                        <ul class="dropdown-menu" style="width : 20rem;height: 20rem; color:black;text-align:center;">
+                        <li><a class="dropdown-item" href="/signup" style="color:black;margin-top:1.2rem;">Sign up</a></li>
+                        <li><a class="dropdown-item" href="/logout" style="color:black;margin-top:1.2rem;">Logout</a></li>
+                        </ul>
+                    </li>
                 </nav>
             </div>
             <div><a href="/home" class="logo"><span style="color: black;">SAFE CITY</span></a>
@@ -575,10 +588,11 @@
                 </div>
 
                 <div class="Ride-img">
-                    <img src="https://www.imgglobalinfotech.com/imgadmin2/images/blog/blogimageHow-Much-Does-It-Cost-to-Develop-An-App-Like-Rapido.webp">
+                    <img src="https://thumbs.dreamstime.com/b/road-gps-navigation-city-map-car-street-highway-roadmap-infographics-stock-vector-156915584.jpg" style="width:50rem;">
                 </div>
         </div>
     </section>
+
 <section class="Ride" id="Ride">
         <div class="home-content">
                 <div class="Ride-text">
@@ -589,24 +603,20 @@
             <button class="btn btn-primary start_btn"><a href="/api/battery-status" style="text-decoration: none;color:white;">See users</a></button>
                 </div>
                 <div class="Ride-img" style="margin-top: none;">
-                    <img src="https://i.pinimg.com/564x/b5/12/68/b5126803cf115b044849b64ca565a4a7.jpg" style="width:34rem;height:34rem;border-radius: 50%;background-color:black;">
+                    <img src="https://i.pinimg.com/736x/fd/5a/0c/fd5a0cf12b5c0361e02c219070ed70a1.jpg" style="width:48rem;height:40rem;border-radius: 10%;background-color:black;margin-right:2rem;">
                 </div>
         </div>
     </section>
 
 
     <section>
-        <div style="font-size: 1.3rem;text-align:center;">
-            <p style="color:green;">Green : Show current Location</p>
-        <p style="color: red;">Red : Show famous places</p>
-    </div>
-        <div id="map"></div>
+        <div id="map" style="width:100%;border-radius:none;height:60rem;"></div>
     </section>
+<br><br>
 
-
-    <footer class="footer">
+    <footer class="footer" style="background-color: rgb(1, 1, 33); color:white;">
 <div style="" class="secure_cite">
-<a href="#Safety" style="font-size: 2.9rem;color:red;text-decoration:underline;">Some website reference's for your Safety</a>
+<a href="#Safety" style="font-size: 2.9rem;text-decoration:underline;">Some website reference's for your Safety</a>
 <a href="https://www.darkreading.com/" target="_main">Visit Dark Reading</a></li>
 <a href="https://www.threatpost.com/" target="_main">Visit ThreatPost</a>
 <a href="https://thehackernews.com/" target="_main">Visit The Hacker News</a>
@@ -623,7 +633,7 @@
 
 
 <div style="" class="secure_cite2">
-    <h1 style="color : red;font-size:3.2rem;margin-top:2rem;text-decoration:underline;">Authentication</h1>
+    <h1 style="font-size:3.2rem;margin-top:2rem;text-decoration:underline;">Authentication</h1>
     <a href="/signup">Signup</a>
     <a href="/login">Log In</a>
     </div>
@@ -635,6 +645,26 @@
         </p>
     </div>
     </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script>
+    let toogle_btn = true;
+    const button = document.querySelector(".users_page");
+    button.addEventListener("click",() => {
+        if(toogle_btn == true) {
+            document.querySelector(".authentication-section").style.display = "block";
+            document.querySelector(".authentication-section").style.zIndex = "10";
+            toogle_btn = false;
+        }else {
+            toogle_btn = true;
+            document.querySelector(".authentication-section").style.display = "none";
+        }
+    })
+</script>
+
 
     <script>
         const searchBar = document.querySelector('form');
@@ -667,6 +697,106 @@ searchBar.addEventListener('submit', (e) => {
         {"longitude" : 77.7029, "latitude" : 28.9894},
         {"longitude" : 77.7113,"latitude" :  28.9736},
         {"longitude" : 77.7400,"latitude" :  28.9900},
+        {"longitude": 94.9784, "latitude": 21.6174},
+        {"longitude": 88.4454, "latitude": 31.3308},
+        {"longitude": 75.9709, "latitude": 27.9431},
+        {"longitude": 90.8952, "latitude": 16.9637},
+        {"longitude": 91.6892, "latitude": 8.7005},
+        {"longitude": 84.8588, "latitude": 32.7959},
+        {"longitude": 94.86, "latitude": 10.4505},
+        {"longitude": 81.6965, "latitude": 31.552},
+        {"longitude": 71.2302, "latitude": 12.3538},
+        {"longitude": 88.7319, "latitude": 8.6221},
+        {"longitude": 85.3601, "latitude": 9.0601},
+        {"longitude": 89.7301, "latitude": 17.5689},
+        {"longitude": 96.9037, "latitude": 27.4055},
+        {"longitude": 94.0318, "latitude": 11.3168},
+        {"longitude": 85.1198, "latitude": 29.5753},
+        {"longitude": 84.262, "latitude": 35.8832},
+        {"longitude": 96.3409, "latitude": 26.3915},
+        {"longitude": 74.9846, "latitude": 33.7802},
+        {"longitude": 86.7067, "latitude": 27.1823},
+        {"longitude": 77.8335, "latitude": 15.9882},
+        {"longitude": 80.5038, "latitude": 19.7504},
+        {"longitude": 92.1565, "latitude": 22.1477},
+        {"longitude": 83.5089, "latitude": 25.1817},
+        {"longitude": 75.9454, "latitude": 19.9297},
+        {"longitude": 95.0371, "latitude": 22.3627},
+        {"longitude": 73.3899, "latitude": 14.3805},
+        {"longitude": 77.3356, "latitude": 14.7936},
+        {"longitude": 96.29, "latitude": 32.3376},
+        {"longitude": 78.6261, "latitude": 32.7981},
+        {"longitude": 80.9739, "latitude": 9.4083},
+        {"longitude": 93.2878, "latitude": 34.2131},
+        {"longitude": 83.2601, "latitude": 20.3241},
+        {"longitude": 75.1022, "latitude": 32.7202},
+        {"longitude": 82.9233, "latitude": 23.6809},
+        {"longitude": 72.4289, "latitude": 19.4574},
+        {"longitude": 83.7896, "latitude": 22.9627},
+        {"longitude": 74.19, "latitude": 28.7988},
+        {"longitude": 84.1589, "latitude": 36.9939},
+        {"longitude": 68.2333, "latitude": 16.3147},
+        {"longitude": 71.3118, "latitude": 18.1661},
+        {"longitude": 91.9465, "latitude": 18.5136},
+        {"longitude": 78.1538, "latitude": 32.7429},
+        {"longitude": 88.4894, "latitude": 25.4222},
+        {"longitude": 79.6193, "latitude": 34.9373},
+        {"longitude": 71.9144, "latitude": 26.6399},
+        {"longitude": 88.0468, "latitude": 18.2619},
+        {"longitude": 75.6932, "latitude": 22.1025},
+        {"longitude": 89.0195, "latitude": 22.1865},
+        {"longitude": 71.9664, "latitude": 26.745},
+        {"longitude": 71.3161, "latitude": 24.1482},
+        {"longitude": 74.2734, "latitude": 13.0942},
+        {"longitude": 79.5748, "latitude": 33.53},
+        {"longitude": 75.202, "latitude": 9.3462},
+        {"longitude": 77.2004, "latitude": 8.8753},
+        {"longitude": 74.0042, "latitude": 31.9056},
+        {"longitude": 82.3119, "latitude": 11.3273},
+        {"longitude": 94.4813, "latitude": 11.9644},
+        {"longitude": 84.9949, "latitude": 34.2164},
+        {"longitude": 71.5779, "latitude": 26.4365},
+        {"longitude": 95.5676, "latitude": 17.7286},
+        {"longitude": 75.2431, "latitude": 10.3145},
+        {"longitude": 96.8384, "latitude": 36.1186},
+        {"longitude": 87.5378, "latitude": 20.6248},
+        {"longitude": 70.5798, "latitude": 14.4853},
+        {"longitude": 78.9362, "latitude": 32.628},
+        {"longitude": 94.8244, "latitude": 26.8251},
+        {"longitude": 74.1485, "latitude": 34.8137},
+        {"longitude": 70.9132, "latitude": 35.0934},
+        {"longitude": 81.4897, "latitude": 22.7897},
+        {"longitude": 74.7163, "latitude": 21.5292},
+        {"longitude": 83.7072, "latitude": 25.2224},
+        {"longitude": 94.5167, "latitude": 29.9821},
+        {"longitude": 84.2996, "latitude": 19.0649},
+        {"longitude": 89.9578, "latitude": 27.1119},
+        {"longitude": 77.6616, "latitude": 36.1319},
+        {"longitude": 69.9217, "latitude": 9.7419},
+        {"longitude": 78.7889, "latitude": 35.2827},
+        {"longitude": 80.5171, "latitude": 27.5256},
+        {"longitude": 74.1237, "latitude": 25.7932},
+        {"longitude": 74.0836, "latitude": 28.0524},
+        {"longitude": 74.1326, "latitude": 28.0356},
+        {"longitude": 70.3695, "latitude": 34.0733},
+        {"longitude": 83.7125, "latitude": 17.5585},
+        {"longitude": 80.5074, "latitude": 8.7521},
+        {"longitude": 88.563, "latitude": 28.9883},
+        {"longitude": 77.6173, "latitude": 12.1687},
+        {"longitude": 77.6246, "latitude": 12.5338},
+        {"longitude": 70.9977, "latitude": 24.3434},
+        {"longitude": 96.1109, "latitude": 24.7376},
+        {"longitude": 79.4651, "latitude": 14.6165},
+        {"longitude": 89.2252, "latitude": 12.9322},
+        {"longitude": 72.3613, "latitude": 34.1101},
+        {"longitude": 90.0531, "latitude": 16.8589},
+        {"longitude": 79.4033, "latitude": 30.6815},
+        {"longitude": 92.8282, "latitude": 15.872},
+        {"longitude": 78.8885, "latitude": 31.9396},
+        {"longitude": 94.7324, "latitude": 24.5921},
+        {"longitude": 70.1868, "latitude": 33.035},
+        {"longitude": 88.3503, "latitude": 14.3583},
+        {"longitude": 73.2811, "latitude": 33.6027}
 ];
 
         mapboxgl.accessToken =  'pk.eyJ1Ijoic2FydGhhazEyMSIsImEiOiJjbHhsazF0bXIwMThhMmxzM2NoeXRmZWg5In0.JT53EZpovFVZDZah9ROOpw';
@@ -674,7 +804,7 @@ searchBar.addEventListener('submit', (e) => {
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
             projection: 'globe',
-            zoom: 10,
+            zoom: 5,
             center: [77.6822, 28.9938]
 });
 const marker = new mapboxgl.Marker({color:"green"})

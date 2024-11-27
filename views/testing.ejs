@@ -15,7 +15,6 @@
 
 
 
-
 <style>
     * {
         margin: 0;
@@ -38,28 +37,30 @@
     }
     .header {
         width: 100%;
-        padding: 9rem;
-        background-color: rgb(247, 246, 246);
+        padding: 6rem;
+        background-color: rgb(1, 6, 30);
         backdrop-filter: blur(10px);
-        background-image: url("https://static.vecteezy.com/system/resources/thumbnails/047/008/756/small_2x/map-lines-location-free-vector.jpg");
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 5;
         animation: slidefromtop 1s ease forwards;
-        opacity: 0;
-        border-bottom: 1px solid rgb(220, 217, 217);
+        opacity: 2;
         text-align: center;
+        border-bottom: 1px solid whitesmoke;
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFkdgMZsc3e1EJS1WN34RGr0TO905c0ohMew&s');
+        box-sizing: border-box;
     }
     .container {
         display: flex;
         flex-direction: column;
         height : 100%;
-        width : 70rem;
-        margin: auto;
+        width : 100%;
         gap: 6rem;
         justify-content: flex-start;
+        box-sizing: border-box;
     }
+
     .button2 {
         border: none;
         color: white;
@@ -100,12 +101,16 @@
         border-radius: 2rem;
     }
     .navbar a {
-        font-size: 1.8rem;
+        font-size: 2.8rem;
         color: white;
-        margin-left: 4rem;
+        margin-left: 2rem;
         font-weight: 500;
         transition: 0.3s ease;
         border-bottom: 3px solid transparent;
+        cursor: pointer;
+    }
+    .navbar li {
+        margin-right : 24rem;
     }
     .navbar a:hover,
     .navbar a.active {
@@ -402,7 +407,7 @@
     .secure_cite > a{
             display: block;
             font-size: 1.6rem;
-            color : green;
+            color : white;
             margin-top: 2rem;
     }
 
@@ -410,7 +415,7 @@
         margin-top : 4rem;
         font-size: 3rem;
         display: block;
-        color : green;
+        color : white;
         font-weight: 600;
     }
     .footer {
@@ -418,6 +423,104 @@
         justify-content: space-evenly;
         background-color: rgb(247, 247, 247);
     }
+</style>
+
+
+
+<style>
+.secure_cite > a{
+    display: block;
+    font-size: 1.6rem;
+    color : white;
+    margin-top: 2rem;
+}
+
+.secure_cite2 > a {
+margin-top : 4rem;
+font-size: 3rem;
+display: block;
+color : white;
+font-weight: 600;
+}
+.footer {
+display: flex;
+justify-content: space-evenly;
+background-color: rgb(247, 247, 247);
+}
+</style>
+
+
+<style>
+/* General box styling */
+.box {
+margin: auto;
+height: 60rem;
+width: 100rem;
+display: flex;
+justify-content: center;
+align-items: flex-start; /* Adjust for natural vertical scroll */
+flex-wrap: wrap;
+gap: 2rem;
+margin-top: 5rem;
+overflow-y: scroll;
+scrollbar-color: black transparent;
+scrollbar-width: thin;
+padding: 2rem;
+background-color: #f9f9f9;
+border-radius: 1rem;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar customization */
+.box::-webkit-scrollbar {
+width: 10px;
+}
+.box::-webkit-scrollbar-track {
+background: transparent;
+}
+.box::-webkit-scrollbar-thumb {
+background: #888;
+border-radius: 5px;
+}
+.box::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+
+/* Card styling */
+.card {
+width: 28rem;
+padding: 2rem;
+border-radius: 1rem;
+background-color: #ffffff;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Card text styling */
+.card-title {
+font-size: 1.8rem;
+font-weight: bold;
+margin-bottom: 1rem;
+color: #333;
+}
+
+.card-subtitle {
+font-size: 1.5rem;
+color: #666;
+margin-bottom: 1rem;
+}
+
+.card-text {
+font-size: 1.4rem;
+color: #555;
+line-height: 1.6;
+}
+
 </style>
 
 <style>
@@ -431,54 +534,86 @@
     }
 </style>
 
-
-
-
-
-
 </head>
-<body>
-
-    <header class="header" style="margin-bottom: none;">
-        <div class="container">
-            <div>
-                <nav class="navbar">
-                    <a href="/home" class="active" style="color:black;">Home</a>
-                    <a href="/service" style="color:black;">Create section</a>
-                    <a href="/safety" style="color:black;">Battery_Level</a>
-                    <a href="/login" class="button2" style="color:black;">Login</a>
-                    <a href="/signup" class="button2" style="color:black;">SignUp</a>
-                </nav>
-            </div>
-            <div><a href="/home" class="logo"><span style="color:black;">SAFE CITY</span></a>
+<body style="background-color: rgb(1, 1, 28);color:white;">
+        <header class="header">
+            <div class="container">
+                <div>
+                    <nav class="navbar">
+                        <a href="/home" class="active" style="color: black; font-weight:600;font-size:3rem;padding:0.2rem;">Home</a>
+                        <a href="/service" style="color: black; font-weight:600;font-size:3rem;">Create section</a>
+                        <a href="/safety" style="color: black; font-weight:600;font-size:3rem;">Battery_Level</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" style="color:black;" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Signup/login</a>
+                            <ul class="dropdown-menu" style="width : 20rem;height: 20rem; color:black;text-align:center;">
+                            <li><a class="dropdown-item" href="/signup" style="color:black;margin-top:1.2rem;">Sign up</a></li>
+                            <li><a class="dropdown-item" href="/login" style="color:black;margin-top:1.2rem;">Login</a></li>
+                            <li><a class="dropdown-item" href="/logout" style="color:black;margin-top:1.2rem;">Logout</a></li>
+                            </ul>
+                        </li>
+                    </nav>
+                </div>
+                <div><a href="/home" class="logo"><span style="color: black;">SAFE CITY</span></a>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="/logout" style="color: black; font-size:1.5rem;padding:2rem;background-color:yellow;border-radius:2rem;">Logout</a></div>
-            <div>
-                <form action="/">
-                    <input type="text" class="search_bar" placeholder="search anything">
-                </form>
+                <a href="/logout" style="color: black; font-size:1.5rem;background-color:yellow;padding:2rem;border-radius:2rem;">Logout</a></div>
+                <div>
+                    <form action="/">
+                        <input type="text" class="search_bar" placeholder="search anything">
+                    </form>
+                </div>
             </div>
-        </div>
-        </header>
+            </header>
 
 
 
 
-    <h1 style="color:blue;font-size : 5rem; padding:4rem;text-align:center;">Registered User's</h1>
-    <div class="main" style="background-color: white;">
+
+
+    <h1 style="color:blue;background-color:yellow;font-size : 5rem; padding:1rem;text-align:center;margin-top:4rem;">Registered User's</h1>
+    <div class="main">
     <% for(let list of data) { %>
-        <div class="card text-center" style="width: 40rem;border:none; padding:3rem; background-color:rgb(248, 248, 248);">
-            <img src="<%= list.image.url %>" class="card-img-top" alt="user image" style="height: 30rem;width:100%;">
-            <div class="card-body" style="font-size: 2rem;">
-            <h5 class="card-title" style="font-size: 1.5rem;"><%= list.username %></h5>
-            <p class="card-text"><%= list.Vehicle_No %></p>
-            <a href="/api/battery-status/<%= list._id %>" class="btn btn-success" style="padding: 0.7rem;font-size:1.5rem;">See more!</a>
+        <div class="card text-center" style="width:40rem;border:none; padding:3rem;background-color:black;">
+            <img src="<%= list.image.url %>" class="card-img-top" alt="user image" style="height: 25rem;width:35rem;">
+            <div class="card-body" style="font-size: 2rem;color:whitesmoke">
+            <h5 class="card-title" style="font-size: 1.5rem; color:whitesmoke;"><%= list.username %></h5>
+            <p class="card-text" style="color: whitesmoke;"><%= list.Vehicle_No %></p>
+            <a href="/api/battery-status/<%= list._id %>" class="btn btn-success" style="padding: 0.7rem;font-size:1.5rem;">Let's Start!</a>
             </div>
         </div>
         <% } %>
     </div>
 
-
+    <footer class="footer" style="background-color: rgb(1, 1, 33); color:white;">
+        <div style="" class="secure_cite">
+        <a href="#Safety" style="font-size: 2.9rem;text-decoration:underline;">Some website reference's for your Safety</a>
+        <a href="https://www.darkreading.com/" target="_main">Visit Dark Reading</a></li>
+        <a href="https://www.threatpost.com/" target="_main">Visit ThreatPost</a>
+        <a href="https://thehackernews.com/" target="_main">Visit The Hacker News</a>
+        <a href="https://www.bleepingcomputer.com/" target="_main">Visit BleepingComputer</a>
+        <a href="https://securityboulevard.com/" target="_main">Visit Security BouleVard</a>
+        <a href="https://news.sophos.com/en-us/category/serious-security/" target="_main">Visit Naked Security</a>
+        <a href="https://www.csoonline.com/in/" target="_main">Visit CSO Online</a>
+        <a href="https://www.securityweek.com/" target="_main">Visit Security Week</a>
+        <a href="https://www.nist.gov/cybersecurity" target="_main">Visit NIST CyberSecurity</a>
+        <a href="https://www.humansecurity.com/" target="_main">Visit Human Security</a>
+                </li>
+                </ul>
+        </div>
+        
+        
+        <div style="" class="secure_cite2">
+            <h1 style="font-size:3.2rem;margin-top:2rem;text-decoration:underline;">Authentication</h1>
+            <a href="/signup">Signup</a>
+            <a href="/login">Log In</a>
+            </div>
+        
+            <div class="secure_cite3">
+                <img style="border-radius: 50%;"  src="data:image/jpeg;base64,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" alt="website_logo">
+                <p class="copyright" style="color:green;">
+                    &copy devine debuggers | All Rights Reserved
+                </p>
+            </div>
+            </footer>
 
     <script>
         async function monitorBattery() {
