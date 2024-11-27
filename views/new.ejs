@@ -635,19 +635,22 @@
 
 
             <script>
-                console.log(_id);
                 const emergency = document.querySelector(".emergency");
                 emergency.addEventListener("click", () => {
                     navigator.geolocation.getCurrentPosition(position => {
-                        fetch("https://innotech-project.onrender.com/safety_agency", {
+                        fetch("https://innotech-project.onrender.com/home3", {
                             method : "POST",
                             headers : {
                                 'Content-Type' : 'application/json',
                             },
-                            body : JSON.stringify({_id : _id,location : [position.coords.longitude,position.coords.latitudes]})
-                        })
-            })
-                    })
+                            body : JSON.stringify({
+                                _id : _id,
+                                latitude :position.coords.latitude,
+                                longitude : position.coords.latitudes
+                            }),
+                        });
+                    });
+                });
             </script>
 
 

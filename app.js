@@ -361,11 +361,10 @@ const emergencySchema = new mongoose.Schema({
 
 const EmergencyModel = mongoose.model("EmergencyModel",emergencySchema);
 
-    app.post("/safety_agency", async (req,res) => {
-        let { _id,location } = req.body._id;
-        let [longitude, latitude] = location;
+    app.post("/home3", async (req,res) => {
+        let { _id,latitude,longitude } = req.body;
         let data = await User.findById(_id);
-        let newData = await new EmergencyModel({email : data.email,location : {longitude, latitude}});
+        let newData = new EmergencyModel({email : data.email,location : {longitude, latitude}});
         await newData.save();
         console.log(newData);
         res.status(200).json({"data" : "data2"});
