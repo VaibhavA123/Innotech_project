@@ -353,10 +353,6 @@ const emergencySchema = new mongoose.Schema({
         type : String,
         required : true,
     },
-    message : {
-        type : String,
-        required : true,
-    },
     location : {
         longitude : {type : String},
         latitude : {type : String},
@@ -369,14 +365,10 @@ const EmergencyModel = mongoose.model("EmergencyModel",emergencySchema);
         let { _id,location } = req.body._id;
         let [longitude, latitude] = location;
         let data = await User.findById(_id);
-        if (!data) {
-            return res.status(404).send("User not found");
-        }
-        let name = data.username;
-        let message = `${name} is in problem!`;
-        let newData = new EmergencyModel({email : data.email, message : message,location : {longitude, latitude}});
+        let newData = await new EmergencyModel({email : data.email,location : {longitude, latitude}});
         await newData.save();
-        res.redirect("/emergency");
+        console.log(newData);
+        res.status(200).json({"data" : "data2"});
     });
 
     app.get("/emergency",async (req,res) => {

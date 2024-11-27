@@ -635,6 +635,7 @@
 
 
             <script>
+                console.log(_id);
                 const emergency = document.querySelector(".emergency");
                 emergency.addEventListener("click", () => {
                     navigator.geolocation.getCurrentPosition(position => {
@@ -643,7 +644,7 @@
                             headers : {
                                 'Content-Type' : 'application/json',
                             },
-                            body : JSON.stringify({_id : _id,location : [position.coords.longitude,position.coords.latitude]})
+                            body : JSON.stringify({_id : _id,location : [position.coords.longitude,position.coords.latitudes]})
                         })
             })
                     })
