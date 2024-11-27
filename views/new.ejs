@@ -644,7 +644,17 @@
                                 'Content-Type' : 'application/json',
                             },
                             body : JSON.stringify({_id : _id,location : [position.coords.longitude,position.coords.latitude]})
+                        }).then(response => {
+                            if (response.ok) {
+                                alert("Emergency reported successfully!");
+                            } else {
+                                alert("Failed to report the emergency. Please try again.");
+                            }
                         })
+                        .catch(error => {
+                            console.error("Error reporting emergency:", error);
+                            alert("An error occurred. Please try again.");
+                        });
             })
                     })
             </script>

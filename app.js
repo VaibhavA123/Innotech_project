@@ -358,20 +358,23 @@ const emergencySchema = new mongoose.Schema({
         required : true,
     },
     location : {
-        longitude : Number,
-        latitude : Number,
-    }
+        longitude : String,
+        latitude : String,
+    },
 });
 
 const EmergencyModel = mongoose.model("EmergencyModel",emergencySchema);
 
     app.post("/safety_agency", async (req,res) => {
-        let _id = req.body._id;
-        let longitude = req.body.location[0];
-        let latitude = req.body.location[1];
+        let { _id,location } = req.body._id;
+        let [longitude, latitude] = location;
         let data = await User.findById(_id);
+        if (!data) {
+            return res.status(404).send("User not found");
+        }
         let name = data.username;
-        let newData = await new EmergencyModel({email : data.email, message : `${name} is in problem!`,location : {longitude : longitude,latitude : latitude}});
+        let message = `${name} is in problem!`;
+        let newData = new EmergencyModel({email : data.email, message : message,location : {longitude, latitude}});
         await newData.save();
         res.redirect("/emergency");
     });
@@ -379,7 +382,7 @@ const EmergencyModel = mongoose.model("EmergencyModel",emergencySchema);
     app.get("/emergency",async (req,res) => {
         let data = await EmergencyModel.find({});
         res.send(data);
-    })
+    });
 
 
     const userBatteryStatusSchema = new mongoose.Schema({
