@@ -370,11 +370,10 @@ const EmergencyModel = mongoose.model("EmergencyModel",emergencySchema);
         let longitude = req.body.location[0];
         let latitude = req.body.location[1];
         let data = await User.findById(_id);
-        console.log(data);
         let name = data.username;
-        let newData = new EmergencyModel({email : data.email, message : `${name} is in problem!`,location : {longitude : longitude,latitude : latitude}});
+        let newData = await new EmergencyModel({email : data.email, message : `${name} is in problem!`,location : {longitude : longitude,latitude : latitude}});
         await newData.save();
-        res.send("e");
+        res.redirect("/emergency");
     });
 
     app.get("/emergency",async (req,res) => {
