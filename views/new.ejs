@@ -638,7 +638,7 @@
                 const emergency = document.querySelector(".emergency");
                 emergency.addEventListener("click", () => {
                     navigator.geolocation.getCurrentPosition(position => {
-                        fetch("/safety_agency", {
+                        fetch("https://innotech-project.onrender.com/safety_agency", {
                             method : "POST",
                             headers : {
                                 'Content-Type' : 'application/json',
