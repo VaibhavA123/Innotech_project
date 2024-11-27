@@ -7,49 +7,6 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
     <style>
-        body { margin: 0; padding: 0; }
-        #map {
-            height: 30rem;
-            width: 30rem;
-            margin: 5rem auto;
-            border-radius: 10%;
-        }
-        .custom-marker {
-            width: 15px;
-            height: 15px;
-            background-color: red;
-            border-radius: 50%; /* Make it circular */
-            border: 2px solid white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-    </style>
-    <style>
-        body { margin: 0; padding: 0; }
-        #map {
-            height: 50rem;
-            width: 100rem;
-            margin: 5rem auto;
-            border-radius: 10%;
-        }
-        .custom-marker {
-            width: 15px;
-            height: 15px;
-            background-color: red;
-            border-radius: 50%; /* Make it circular */
-            border: 2px solid white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .custom-marker2 {
-            width: 18px;
-            height: 18px;
-            background-color: red;
-            border-radius: 40%; /* Make it circular */
-            border: 2px solid white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-    </style>
-    <style>
         * {
             margin: 0;
             padding: 0;
@@ -71,28 +28,30 @@
         }
         .header {
             width: 100%;
-            padding: 9rem;
-            background-color: rgb(247, 246, 246);
+            padding: 6rem;
+            background-color: rgb(1, 6, 30);
             backdrop-filter: blur(10px);
-            background-image: url("https://static.vecteezy.com/system/resources/thumbnails/047/008/756/small_2x/map-lines-location-free-vector.jpg");
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 5;
             animation: slidefromtop 1s ease forwards;
-            opacity: 0;
-            border-bottom: 1px solid rgb(220, 217, 217);
+            opacity: 2;
             text-align: center;
+            border-bottom: 1px solid whitesmoke;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFkdgMZsc3e1EJS1WN34RGr0TO905c0ohMew&s');
+            box-sizing: border-box;
         }
         .container {
             display: flex;
             flex-direction: column;
             height : 100%;
-            width : 70rem;
-            margin: auto;
+            width : 100%;
             gap: 6rem;
             justify-content: flex-start;
+            box-sizing: border-box;
         }
+    
         .button2 {
             border: none;
             color: white;
@@ -133,12 +92,16 @@
             border-radius: 2rem;
         }
         .navbar a {
-            font-size: 1.8rem;
+            font-size: 2.8rem;
             color: white;
-            margin-left: 4rem;
+            margin-left: 2rem;
             font-weight: 500;
             transition: 0.3s ease;
             border-bottom: 3px solid transparent;
+            cursor: pointer;
+        }
+        .navbar li {
+            margin-right : 24rem;
         }
         .navbar a:hover,
         .navbar a.active {
@@ -305,7 +268,8 @@
             bottom: 0;
             width: 100%;
             padding: 40px 0;
-            background-color: var(--bg-color);
+            background-color: grey;
+            height : 60rem;
         }
         .footer ul {
             margin-top: 0;
@@ -431,54 +395,155 @@
             background-color: red;
             color: white;
         }
-    </style>
-
-    <style>
         .secure_cite > a{
+                display: block;
+                font-size: 1.6rem;
+                color : white;
+                margin-top: 2rem;
+        }
+    
+        .secure_cite2 > a {
+            margin-top : 4rem;
+            font-size: 3rem;
             display: block;
-            font-size: 1.6rem;
-            color : green;
-            margin-top: 2rem;
-    }
-
-    .secure_cite2 > a {
-        margin-top : 4rem;
-        font-size: 3rem;
+            color : white;
+            font-weight: 600;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: rgb(247, 247, 247);
+        }
+    </style>
+    
+    
+    
+    <style>
+    .secure_cite > a{
         display: block;
-        color : green;
-        font-weight: 600;
+        font-size: 1.6rem;
+        color : white;
+        margin-top: 2rem;
+    }
+    
+    .secure_cite2 > a {
+    margin-top : 4rem;
+    font-size: 3rem;
+    display: block;
+    color : white;
+    font-weight: 600;
     }
     .footer {
-        display: flex;
-        justify-content: space-evenly;
-        background-color: rgb(247, 247, 247);
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(247, 247, 247);
     }
     </style>
-    </head>
-    <body>
-
-
-    <header class="header">
-            <div class="container">
-                <div>
-                    <nav class="navbar">
-                        <a href="/home" class="active" style="color:black;">Home</a>
-                        <a href="/service" style="color:black;">Create section</a>
-                        <a href="/safety" style="color:black;">Battery_Level</a>
-                        <a href="/login" class="button2" style="color : black;">Login</a>
-                        <a href="/signup" class="button2" style="color : black;">SignUp</a>
-                    </nav>
-                </div>
-                <div><a href="/home" class="logo"><span style="color: black;">SAFE CITY</span></a>
+    
+    
+    <style>
+    /* General box styling */
+    .box {
+    margin: auto;
+    height: 60rem;
+    width: 100rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Adjust for natural vertical scroll */
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 5rem;
+    overflow-y: scroll;
+    scrollbar-color: black transparent;
+    scrollbar-width: thin;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Scrollbar customization */
+    .box::-webkit-scrollbar {
+    width: 10px;
+    }
+    .box::-webkit-scrollbar-track {
+    background: transparent;
+    }
+    .box::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+    }
+    .box::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    }
+    
+    /* Card styling */
+    .card {
+    width: 28rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Card text styling */
+    .card-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+    }
+    
+    .card-subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 1rem;
+    }
+    
+    .card-text {
+    font-size: 1.4rem;
+    color: #555;
+    line-height: 1.6;
+    }
+    
+    </style>
+    
+    <body style="background-color: rgb(1, 1, 28);color:white;">
+    
+    
+            <header class="header">
+                <div class="container">
+                    <div>
+                        <nav class="navbar">
+                            <a href="/home" class="active" style="color: black; font-weight:600;font-size:3rem;padding:0.2rem;">Home</a>
+                            <a href="/service" style="color: black; font-weight:600;font-size:3rem;">Create section</a>
+                            <a href="/safety" style="color: black; font-weight:600;font-size:3rem;">Battery_Level</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="color:black;" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Signup/login</a>
+                                <ul class="dropdown-menu" style="width : 20rem;height: 20rem; color:black;text-align:center;">
+                                <li><a class="dropdown-item" href="/signup" style="color:black;margin-top:1.2rem;">Sign up</a></li>
+                                <li><a class="dropdown-item" href="/login" style="color:black;margin-top:1.2rem;">Login</a></li>
+                                <li><a class="dropdown-item" href="/logout" style="color:black;margin-top:1.2rem;">Logout</a></li>
+                                </ul>
+                            </li>
+                        </nav>
+                    </div>
+                    <div><a href="/home" class="logo"><span style="color: black;">SAFE CITY</span></a>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="/logout" style="color: black; font-size:1.5rem;padding:2rem;border-radius:2rem;background-color:yellow;text-decoration:underline;">Logout</a></div>
-                <div>
-                    <form action="/">
-                        <input type="text" class="search_bar" placeholder="search anything">
-                    </form>
+                    <a href="/logout" style="color: black; font-size:1.5rem;background-color:yellow;padding:2rem;border-radius:2rem;">Logout</a></div>
+                    <div>
+                        <form action="/">
+                            <input type="text" class="search_bar" placeholder="search anything">
+                        </form>
+                    </div>
                 </div>
-            </div>
-            </header>
+                </header>
 <br><br><br><br>
 
 <h1 class="battery-level"></h1>

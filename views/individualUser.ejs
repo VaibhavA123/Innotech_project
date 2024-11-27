@@ -601,14 +601,15 @@ line-height: 1.6;
 </form>
 
 
-<h1>Second Method of finding Destination</h1>
+<h1 style="margin-top: 5rem;color:blue;background-color:yellow;padding:2rem;font-size:3rem;">Second Method of finding Destination</h1>
 
-<form action="https://www.google.com/maps/search/?api=1&query="  class="destination_finding">
-    <input type="text" placeholder="destination" name="destination">
-    <button>Submit</button>
+<form action="https://www.google.com/maps/search/?api=1&query=" target="_main"  class="destination_finding" style="margin-top: 5rem;">
+    <label for="destination" style="font-size: 2.2rem;margin-right:2rem;">Enter your destination : </label>
+    <input type="text" id="destination" placeholder="destination" name="destination" style="width : 50rem;height:7rem;padding:2rem;font-size:2rem;border-radius:3rem;">
+    <button style="padding:1rem;font-size:2rem;background-color:red;color:white;border-radius:4rem;">Search</button>
 </form>
 
-<h1 style="font-size:4rem;color:blue;background-color:yellow;">Please give your precious review</h1>
+<h1 style="margin-top:15rem;font-size:4rem;color:blue;background-color:yellow;">Please give your precious review</h1>
 <form action="/review/<%= list._id %>" method="post" style="margin-top: 5rem;">
     <label for="review_input" style="font-size: 2rem;">Write your comment here : </label>
     <input type="text" id="review_input" name="message" placeholder="enter your message" style="margin-left:3rem;width:50rem;height:10rem;border-radius:2rem;padding:4rem;font-size:2rem;">
