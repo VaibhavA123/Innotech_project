@@ -637,14 +637,16 @@
             <script>
                 const emergency = document.querySelector(".emergency");
                 emergency.addEventListener("click", () => {
+                    navigator.geolocation.getCurrentPosition(position => {
                         fetch("/safety_agency", {
                             method : "POST",
                             headers : {
                                 'Content-Type' : 'application/json',
                             },
-                            body : JSON.stringify({_id : _id})
+                            body : JSON.stringify({_id : _id,location : [position.coords.longitude,position.coords.latitude]})
                         })
             })
+                    })
             </script>
 
 

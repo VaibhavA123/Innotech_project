@@ -348,12 +348,39 @@ app.delete("/delete/review/:_id", async (req, res) => {
         }
     });
 
-    app.post("/safety_agency", (req,res) => {
+const emergencySchema = new mongoose.Schema({
+    email : {
+        type : String,
+        required : true,
+    },
+    message : {
+        type : String,
+        required : true,
+    },
+    location : {
+        longitude : Number,
+        latitude : Number,
+    }
+});
+
+const EmergencyModel = mongoose.model("EmergencyModel",emergencySchema);
+
+    app.post("/safety_agency", async (req,res) => {
         let _id = req.body._id;
-        let data = User.findById(_id);
+        let longitude = req.body.longitude;
+        let latitude = req.body.latitude;
+        let data = await User.findById(_id);
         console.log(data);
+        let name = data.username;
+        let newData = new EmergencyModel({email : data.email, message : `${username} is in problem!`,location : {longitude : longitude,latitude : latitude}});
+        await newData.save();
         res.send("e");
     });
+
+    app.get("/emergency",async (req,res) => {
+        let data = await EmergencyModel.find({});
+        res.send(data);
+    })
 
 
     const userBatteryStatusSchema = new mongoose.Schema({
