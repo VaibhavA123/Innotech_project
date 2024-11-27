@@ -351,7 +351,8 @@ app.delete("/delete/review/:_id", async (req, res) => {
     app.post("/safety_agency", (req,res) => {
         let _id = req.body._id;
         let data = User.findById(_id);
-        res.send(data);
+        console.log(data);
+        res.send("e");
     });
 
 
