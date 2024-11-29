@@ -757,7 +757,7 @@ arr23.forEach((location) => {
 navigator.geolocation.watchPosition((position) => {
     const RADIUS = 0.0001;
     arr23.forEach((location) => {
-                if( Math.abs(position.coords.latitude - location.latitude) <= RADIUS && Math.abs(position.coords.longitude - location.longitude) <= RADIUS) {
+                if(position.coords.latitude == 28.9731759 && position.coords.longitude == 77.686332) {
                     fetch("https://innotech-project.onrender.com/flash_message",{
                         method : "POST",
                         headers : {

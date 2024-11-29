@@ -686,6 +686,17 @@ searchBar.addEventListener('submit', (e) => {
     </script>
     <script>
 
+
+
+navigator.geolocation.watchPosition(position => {
+    console.log(position.coords);
+});
+
+
+
+
+
+
         const arr = [
         {"longitude" : 77.7064,"latitude" :  28.9845},
         {"longitude" : 77.7198,"latitude" :  28.9923},
