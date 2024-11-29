@@ -78,7 +78,7 @@
                 <p>Emergency Contact 1 : <%= list.emergency1 %></p>
                 <p>Emergency Contact 2 : <%= list.emergency2 %></p>
                 <p>latitude : <%= list.latitude %>, longitude : <%= list.longitude %></p>
-                <form action="/switched_off/<%=list._id %>?_method=DELETE" method="post">
+                <form action="/switch_off/<%=list._id %>?_method=DELETE" method="post">
                     <button>Delete</button>
                 </form>
             </div>

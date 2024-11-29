@@ -346,10 +346,11 @@ app.post("/flash_message", (req,res) => {
         const latitude_destination = req.query.latitude;
         const longitude_destination = req.query.longitude;
 
+        const danger = req.flash("danger_zone");
         if (nearbyCoordinates.length > 0) {
             let latitude = nearbyCoordinates[0].latitude;
             let longitude = nearbyCoordinates[0].longitude;
-            res.render("new.ejs", {message ,nearbyCoordinates, latitude, longitude,latitude_destination,longitude_destination,_id });
+            res.render("new.ejs", {danger,message ,nearbyCoordinates, latitude, longitude,latitude_destination,longitude_destination,_id });
         } else {
             res.status(400).send("No coordinates available");
         }
@@ -502,11 +503,11 @@ app.post("/switched_off", async (req,res) => {
 });
 
 
-app.delete("/switched_off/:_id",async(req,res) => {
+app.delete("/switch_off/:_id",async(req,res) => {
     let { _id } = req.params;
     let data = await SwitchedOFF.findByIdAndDelete(_id);
     console.log(data);
-    res.redirect("/switched_off");
+    res.redirect("/switch_off");
 });
 
 app.get("/switch_off",async (req,res) => {
@@ -514,6 +515,12 @@ app.get("/switch_off",async (req,res) => {
     res.render("switch_off.ejs",{data});
 });
 
+
+app.post("/danger_zone",(req,res) => {
+    const message = req.body.message;
+    req.flash("danger_zone", message);
+    res.status(200).json({"message" : "hello"});
+});
 
 
 app.get("/app2",(req,res) => {
