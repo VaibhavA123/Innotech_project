@@ -330,10 +330,6 @@
 <script>
     const socket = io();
 
-    socket.on('connect', () => {
-        console.log('Connected:', socket.id);
-    });
-
     socket.on('message', (msg) => {
         console.log('Message received:', msg);
     });
