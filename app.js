@@ -2,7 +2,6 @@ if(process.env.NODE_ENV != "production" ) {
     require('dotenv').config();
 }
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -24,6 +23,11 @@ const geocodingClient = geocoding({accessToken : mapToken});
 const RateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const { type } = require('os');
+const http = require('http');
+const socketIo = require('socket.io');
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
 
 
 app.set('view engine','ejs');
@@ -34,6 +38,26 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(methodOverride("_method"));
 // app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+
+io.on('connection', (socket) => {
+    console.log('User connected:', socket.id);
+
+
+    socket.on('disconnect', () => {
+        console.log('User disconnected:', socket.id);
+    });
+});
+
+
+
+
+
+
+
+
 
 const store = MongoStore.create({
     mongoUrl : process.env.MONGO_URL,
@@ -537,6 +561,6 @@ app.use((error,req,res,next) => {
     res.render("error.ejs",{error});
 });
 
-app.listen(8080,() => {
+server.listen(8080,() => {
     console.log("Server is listening to port 8080");
 });
