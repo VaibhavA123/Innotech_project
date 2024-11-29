@@ -558,12 +558,8 @@
     color: #555;
     line-height: 1.6;
     }
-    
     </style>
-    
     <body style="background-color: rgb(1, 1, 28);color:white;">
-    
-    
             <header class="header">
                 <div class="container">
                     <div>
@@ -592,6 +588,11 @@
                 </div>
                 </header>
 <br><br><br><br>
+
+<% if(message.length!=0) { %>
+
+    <h1><%= message[0] %></h1>
+    <% } %>
 
 <h1 class="battery-level" style="margin-top: 10rem;"></h1>
 <p></p>
@@ -723,6 +724,7 @@ searchBar.addEventListener('submit', (e) => {
 
 
 
+
         const arr23 = [];
         arr23.length = 0;
         for(let i=0;i<6;i++) {
@@ -730,8 +732,6 @@ searchBar.addEventListener('submit', (e) => {
             const longitude = longitude_destination  - Math.random()*0.2;
             arr23.push({"latitude" : latitude,"longitude" : longitude});
         }
-
-
 
         // Initialize Mapbox map with obtained latitude and longitude
             mapboxgl.accessToken =  'pk.eyJ1Ijoic2FydGhhazEyMSIsImEiOiJjbHhsazF0bXIwMThhMmxzM2NoeXRmZWg5In0.JT53EZpovFVZDZah9ROOpw';
@@ -751,6 +751,29 @@ arr23.forEach((location) => {
     new mapboxgl.Marker(markerElement2)
     .setLngLat([location.longitude,location.latitude])
     .addTo(map);
+});
+
+
+navigator.geolocation.watchPosition((position) => {
+    arr23.forEach((location) => {
+                if(position.coords.latitude == location.latitude && position.coords.longitude == location.longitude) {
+                    fetch("https://innotech-project.onrender.com/flash_message",{
+                        method : "POST",
+                        headers : {
+                            'Content-Type' : 'application/json'
+                        },
+                        body : JSON.stringify({message : "Be careful at this place.This is danger zone."})
+                    });
+                }
+    });
+},
+(error) => {
+    console.error("Error getting location:", error.message);
+},
+{
+    enableHighAccuracy: true, // Use high-accuracy mode if available
+    maximumAge: 0, // Prevent caching
+    timeout: 5000, // Timeout after 5 seconds if no position is found
 });
 
 
@@ -777,10 +800,17 @@ data.shift();
 });
 
 
-navigator.geolocation.getCurrentPosition(position => {
+navigator.geolocation.watchPosition(position => {
     new mapboxgl.Marker({color:"yellowgreen"})
     .setLngLat([position.coords.longitude,position.coords.latitude])
     .addTo(map);
+},
+    (error) => {
+        console.error("Error getting location:", error.message);
+    }, {
+        enableHighAccuracy: true, // Use high-accuracy mode if available
+        maximumAge: 0, // Prevent caching
+        timeout: 5000, // Timeout after 5 seconds if no position is found
 });
 
 

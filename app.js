@@ -216,7 +216,8 @@ app.post("/login",saveRedirectUrl,passport.authenticate("local",{failureFlash:tr
     let data = await new Login({username : username, password : password});
     await data.save();
     console.log(res.locals.redirectUrl);
-    res.redirect(res.locals.redirectUrl);
+    let url = res.locals.redirectUrl || "/home";
+    res.redirect(url);
 });
 
 
@@ -331,9 +332,15 @@ app.delete("/delete/review/:_id", async (req, res) => {
     }
 });
 
+app.post("/flash_message", (req,res) => {
+    let message = req.body.message;
+    req.flash("danger_zone",message);
+    res.status(200).json({success : "Hello"});
+});
 
 
     app.get("/api/battery-status/new/:_id", (req, res) => {
+        let message = req.flash("danger_zone");
         let { _id } = req.params;
         console.log(req.query.latitude);
         const latitude_destination = req.query.latitude;
@@ -342,7 +349,7 @@ app.delete("/delete/review/:_id", async (req, res) => {
         if (nearbyCoordinates.length > 0) {
             let latitude = nearbyCoordinates[0].latitude;
             let longitude = nearbyCoordinates[0].longitude;
-            res.render("new.ejs", { nearbyCoordinates, latitude, longitude,latitude_destination,longitude_destination,_id });
+            res.render("new.ejs", {message ,nearbyCoordinates, latitude, longitude,latitude_destination,longitude_destination,_id });
         } else {
             res.status(400).send("No coordinates available");
         }
