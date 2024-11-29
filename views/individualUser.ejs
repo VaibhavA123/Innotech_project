@@ -6,538 +6,343 @@
     <title>Active user</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        text-decoration: none;
-        border: none;
-        outline: none;
-        scroll-behavior: smooth;
-        font-family: "Poppins",
-            sans-serif;
-    }
-    :root {
-        --bg-color:white;
-        --text-color: black;
-    }
-    html {
-        font-size: 60%;
-        overflow-x: hidden;
-    }
-    .header {
-        width: 100%;
-        padding: 6rem;
-        background-color: rgb(1, 6, 30);
-        backdrop-filter: blur(10px);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 5;
-        animation: slidefromtop 1s ease forwards;
-        opacity: 2;
-        text-align: center;
-        border-bottom: 1px solid whitesmoke;
-        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFkdgMZsc3e1EJS1WN34RGr0TO905c0ohMew&s');
-        box-sizing: border-box;
-    }
-    .container {
-        display: flex;
-        flex-direction: column;
-        height : 100%;
-        width : 100%;
-        gap: 6rem;
-        justify-content: flex-start;
-        box-sizing: border-box;
-    }
-
-    .button2 {
-        border: none;
-        color: white;
-        padding: 5px 20px;
-        text-align: center;
-        font-size: 16px;
-        cursor: pointer;
-        font-weight: 800;
-        margin-bottom: 2px;
-    }
-    @keyframes slidefromtop {
-        0% {opacity: 0;
-            transform: translateY(-100%);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    .logo {
-        font-size: 3rem;
-        color: white;
-        font-weight: 800;
-        cursor: pointer;
-        transition: 0.3s ease;
-    }
-    .logo:hover {
-        transform: scale(1.1);
-    }
-    .logo span {
-        text-shadow: 0 0 25px white;
-        color : white;
-    }
-    .search_bar {
-        width : 65rem;
-        height : 4.6rem;
-        padding : 2.6rem;
-        border-radius: 2rem;
-    }
-    .navbar a {
-        font-size: 2.8rem;
-        color: white;
-        margin-left: 2rem;
-        font-weight: 500;
-        transition: 0.3s ease;
-        border-bottom: 3px solid transparent;
-        cursor: pointer;
-    }
-    .navbar li {
-        margin-right : 24rem;
-    }
-    .navbar a:hover,
-    .navbar a.active {
-        color: white;
-        border-bottom: 3px solid white;
-    }
-    #menu-icon {
-        font-size: 3.6rem;
-        color: var(--main-color);
-        display: none;
-    }
-    section{
-        height: 100vh;
-        padding: 10rem 12% 10rem;
-    }
-    .Ride{
-        display: flex;
-        flex-direction: row;
-        align-items:center;
-        justify-content: center;
-        align-self: flex-end;
-        /* gap:50rem */
-    }
-    .home-content {
-        display: flex;
-        flex-direction: row;
-        /* align-items: baseline; */
-        /* text-align: left; */
-        justify-content: center;
-        align-items: center;
-        margin-top: 3rem;
-        animation: slidefromleft 1s ease forwards;
-        opacity: 0;
-    }
-
-    @keyframes slidefromleft {
-        0% {
-            opacity: 0;
-            transform: translateX(-100%);
-        }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-    span {
-        color: var(--main-color);}
-
-        .logo span {
-            color: var(--main-color);
-        }
-        .home-content h3 {
-            margin-bottom: 2rem;
-            margin-top: 1rem;
-            font-size: 3.5rem;
-        }
-        .home-content h1 {
-            font-size: 7rem;
-            font-weight: 700;
-            margin-top: 1.5rem;
-            line-height: 1;
-        }
-        .Ride-text{
-        padding-right: 30rem;
-        }
-
-    .Ride-img img {
-        position: relative;
-        top: 1rem;
-        width: 52rem;
-        height : 40rem;
-        box-shadow: 0 0 5px black;
-        border-radius: 2rem;
-    }
-    .btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 50px var(--main-color);
-    }
-    .text-animation {
-        font-size: 34px;
-        font-weight: 600;
-        min-width: 280px;
-    }
-    .text-animation span {
-        position: relative;
-    }
-    .text-animation span::before {
-        content: "SAFE CITY.";
-        color: var(--main-color);
-        animation: words 20s infinite;
-    }
-    .text-animation span::after {
-        content: "";
-        background-color: var(--bg-color);
-        position: absolute;
-        width: calc(100% + 2px);
-        height: 90%;
-        border-left: 3px solid var(--bg-color);
-        right: -8px;
-        animation: cursor 0.7s infinite, typing 20s steps(22) infinite;
-    }
-    @keyframes cursor {
-        to {
-            border-left: 2px solid var(--main-color);
-        }
-    }
-    @keyframes typing {
-        10%,
-        15%,
-        30%,
-        35%,
-        50%,
-        55%,
-        70%,
-        75%,
-        90%,
-        95% {
-            width: 0;
-        }
-        5%,
-        20%,
-        25%,
-        40%,
-        45%,
-        60%,
-        65%,
-        80%,
-        85% {
-            width: calc(100% + 90px);
-        }
-    }
-    body {
-        height: 100vh;
-        background: var(--bg-color);
-        font-family: Helvetica, sans-serif;
-        color: rgb(19, 16, 16);
-        text-shadow: var(--main-color);
-        justify-content: center;
-        align-items: center;
-    }
-    .heading {
-        font-size: 8rem;
-        text-align: center;
-        margin: 2rem;
-    }
-    [type="submit"] {
-      font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-      width: 100%;
-      background:var(--main-color);
-      border-radius:5px;
-      border:0;
-      cursor:pointer;
-      color:white;
-      font-size:24px;
-      padding-top:10px;
-      padding-bottom:10px;
-      transition: all 0.3s;
-      margin-top:-4px;
-      font-weight:700;
-    }
-    [type="submit"]:hover { background:var(--main-color); }
-    .footer {
-        position: relative;
-        bottom: 0;
-        width: 100%;
-        padding: 40px 0;
-        background-color: grey;
-        height : 60rem;
-    }
-    .footer ul {
-        margin-top: 0;
-        padding: 0;
-        font-size: 15px;
-        line-height: 1.3;
-        margin-bottom: 0;
-        text-align: center;
-    }
-    .footer ul li a {
-        color:black;
-        border-bottom: 3px solid transparent;
-        transition: 0.3s ease-in-out;
-    }
-    footer ul li a:hover {
-        border-bottom: 3px solid var(--main-color);
-    }
-    
-    .footer ul li {
-        display: inline-block;
-        padding: 0 15px;
-    }
-    .footer .copyright {
-        margin-top: 30px;
-        text-align: center;
-        font-size: 13px;
-        color: white;
-    }
-    @media (max-width:1264px) {
-        html {
-            font-size: 55%;
-        }
-    }
-    @media (max-width : 1153px) {
-        .text-animation span::before {
-            content: "SMART CITY";
-            color: var(--main-color);
-        }
-        .text-animation span::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-        }
-    }
-    @media (max-width:906px) {
-        header {
-            padding: 2rem 3%;
-        }
-        section {
-            padding: 10rem 3% 2rem;
-        }
-     .footer {
-            padding: 2rem 3%;
-        }
-    }
-    @media(max-width:895px) {
-        #menu-icon {
-            display: block;
-        }
-    
-        .navbar {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            width: 50%;
-            padding: 1rem 3%;
-            background: rgba(189, 175, 175, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom-left-radius: 2rem;
-            border-left: 2px solid var(--main-color);
-            border-bottom: 2px solid var(--main-color);
-            display: none;
-        }
-        .navbar.active {
-            display: block;
-        }
-        .navbar a {
-            display: block;
-            font-size: 2rem;
-            margin: 3rem 0;
-            color: white;
-        }
-        .home {
-            flex-direction: column-reverse;
-            margin: 5rem 4rem;
-        }
-    
-        .home-content h3 {
-            font-size: 2.6rem;
-        }
-        .home-content h1 {
-            font-size: 8rem;
-            margin-top: 3rem;
-        }
-        .home-content p {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .home-img img {
-            width: 56vw;
-        }
-
-    }
-    @media only screen and (max-width: 900px) {
-
-        .heading {
-            font-size: 5rem;
-        }
-    }
-    @media only screen and (max-width: 480px) {
-        .heading {
-            font-size:4rem;
-        }
-    }
-
-    .start_btn {
-        height : 6rem;
-        width : 20rem;
-        font-size: 1.8rem;
-        border-radius: 2rem;
-        padding : 2rem;
-        background-color: red;
-        color: white;
-    }
-    .secure_cite > a{
-            display: block;
-            font-size: 1.6rem;
-            color : white;
-            margin-top: 2rem;
-    }
-
-    .secure_cite2 > a {
-        margin-top : 4rem;
-        font-size: 3rem;
-        display: block;
-        color : white;
-        font-weight: 600;
-    }
-    .footer {
-        display: flex;
-        justify-content: space-evenly;
-        background-color: rgb(247, 247, 247);
-    }
-</style>
 
 
 
 <style>
-.secure_cite > a{
-    display: block;
-    font-size: 1.6rem;
-    color : white;
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+.header {
+    background-color: #333;
+    padding: 1rem 0;
+}
+
+.header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover, .navbar .active {
+    background-color: #f44336;
+    border-radius: 5px;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    margin-right: auto;
+}
+
+.search_bar {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 300px;
+    font-size: 1rem;
+}
+
+/* Form Styles */
+form {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 8px;
+    font-size: 1rem;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+
+button.btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    color: white;
+    background-color: #f44336;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.btn:hover {
+    background-color: #d32f2f;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Table Styles */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f44336;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+/* Review Section */
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     margin-top: 2rem;
 }
 
-.secure_cite2 > a {
-margin-top : 4rem;
-font-size: 3rem;
-display: block;
-color : white;
-font-weight: 600;
-}
-.footer {
-display: flex;
-justify-content: space-evenly;
-background-color: rgb(247, 247, 247);
-}
-</style>
-
-
-<style>
-/* General box styling */
-.box {
-margin: auto;
-height: 60rem;
-width: 100rem;
-display: flex;
-justify-content: center;
-align-items: flex-start; /* Adjust for natural vertical scroll */
-flex-wrap: wrap;
-gap: 2rem;
-margin-top: 5rem;
-overflow-y: scroll;
-scrollbar-color: black transparent;
-scrollbar-width: thin;
-padding: 2rem;
-background-color: #f9f9f9;
-border-radius: 1rem;
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Scrollbar customization */
-.box::-webkit-scrollbar {
-width: 10px;
-}
-.box::-webkit-scrollbar-track {
-background: transparent;
-}
-.box::-webkit-scrollbar-thumb {
-background: #888;
-border-radius: 5px;
-}
-.box::-webkit-scrollbar-thumb:hover {
-background: #555;
-}
-
-/* Card styling */
 .card {
-width: 28rem;
-padding: 2rem;
-border-radius: 1rem;
-background-color: #ffffff;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-.card:hover {
-transform: translateY(-5px);
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.card-body {
+    padding: 15px;
+    background-color: white;
 }
 
-/* Card text styling */
 .card-title {
-font-size: 1.8rem;
-font-weight: bold;
-margin-bottom: 1rem;
-color: #333;
-}
-
-.card-subtitle {
-font-size: 1.5rem;
-color: #666;
-margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .card-text {
-font-size: 1.4rem;
-color: #555;
-line-height: 1.6;
+    font-size: 1rem;
+    color: #333;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+button.btn-warning {
+    background-color: #f1c40f;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    color: white;
+}
+
+button.btn-warning:hover {
+    background-color: #f39c12;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer a:hover {
+    color: #f44336;
+}
+
+.secure_cite {
+    margin-bottom: 20px;
+}
+
+.secure_cite2, .secure_cite3 {
+    margin-top: 20px;
+}
+
+.secure_cite3 img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Copyright Section */
+.copyright {
+    font-size: 1rem;
+    margin-top: 20px;
+    color: #ccc;
+}
+
+
+</style>
+
+
+
+
+
+
+<style>
+    /* General footer styling */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+
+/* Section for Safety Links */
+.secure_cite {
+    margin-bottom: 20px;
+}
+
+.secure_cite a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+    margin: 10px 0;
+    transition: color 0.3s ease;
+}
+
+.secure_cite a:hover {
+    color: #f44336;
+}
+
+/* Section for Authentication Links */
+.secure_cite2 {
+    margin: 30px 0;
+}
+
+.secure_cite2 h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #f44336;
+}
+
+.secure_cite2 a {
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 10px 15px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 5px;
+    background-color: #f44336;
+    transition: background-color 0.3s ease;
+}
+
+.secure_cite2 a:hover {
+    background-color: #d32f2f;
+}
+
+/* Section for Logo and Copyright */
+.secure_cite3 {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.secure_cite3 img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.copyright {
+    font-size: 1rem;
+    margin-top: 20px;
+    color: #ccc;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .secure_cite, .secure_cite2 {
+        text-align: left;
+    }
+
+    .secure_cite a {
+        font-size: 1rem;
+    }
+
+    .secure_cite2 a {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+
+    .secure_cite3 img {
+        max-width: 80px;
+    }
 }
 
 </style>
 
-<body style="background-color: rgb(1, 1, 28);color:white;">
 
 
-        <header class="header">
+
+
+
+
+
+
+<body>
+
+    <header class="header">
             <div class="container">
                 <div>
                     <nav class="navbar">
-                        <a href="/home" class="active" style="color: black; font-weight:600;font-size:3rem;padding:0.2rem;">Home</a>
-                        <a href="/service" style="color: black; font-weight:600;font-size:3rem;">Create section</a>
-                        <a href="/safety" style="color: black; font-weight:600;font-size:3rem;">Battery_Level</a>
+                        <a href="/home" class="active">Home</a>
+                        <a href="/service" >Create section</a>
+                        <a href="/safety" >Battery_Level</a>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" style="color:black;" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Signup/login</a>
-                            <ul class="dropdown-menu" style="width : 20rem;height: 20rem; color:black;text-align:center;">
-                            <li><a class="dropdown-item" href="/signup" style="color:black;margin-top:1.2rem;">Sign up</a></li>
-                            <li><a class="dropdown-item" href="/login" style="color:black;margin-top:1.2rem;">Login</a></li>
-                            <li><a class="dropdown-item" href="/logout" style="color:black;margin-top:1.2rem;">Logout</a></li>
+                            <a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Signup/login</a>
+                            <ul class="dropdown-menu" >
+                            <li><a class="dropdown-item" href="/signup">Sign up</a></li>
+                            <li><a class="dropdown-item" href="/login">Login</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
                         </li>
                     </nav>
                 </div>
-                <div><a href="/home" class="logo"><span style="color: black;">SAFE CITY</span></a>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="/logout" style="color: black; font-size:1.5rem;background-color:yellow;padding:2rem;border-radius:2rem;">Logout</a></div>
-                <div>
+                <div><a href="/home" class="logo"><span style="color: rgb(245, 148, 3);">SAFE CITY</span></a><div>
                     <form action="/">
                         <input type="text" class="search_bar" placeholder="search anything">
                     </form>
@@ -545,85 +350,90 @@ line-height: 1.6;
             </div>
             </header>
 
-        <h1 style="text-align: center;font-size:5rem;background-color:yellow;color:blue;">Please Check Your Details, and Use our Service.</h1>
+        <h1 style="text-align: center;margin-top:5rem;margin-bottom:5rem;">Please Check Your Details, and Use our Service.</h1>
 
 
-        <div class="text-center" style="margin-top: 10rem;">
-    <img src="<%= list.image.url %>" alt="user image" style="border-radius: 10%;height: 40rem;width:80rem;">
+        <div class="text-center" >
+    <img src="<%= list.image.url %>" alt="user image"  style="height: 30rem;width:50rem;border-radius:4rem;">
 
-    <table style="font-size: 2rem; gap:2rem; border : 1px solid black;width:100%;margin-top:9rem;">
-        <tr style="text-align: center;">
-            <th colspan="2" style="padding:2rem;text-decoration:underline;">User Detail's</th>
+    <table style="margin-top: 10rem;">
+        <tr>
+            <th colspan="2">User Detail's</th>
         </tr>
-        <tr style="border: 1px solid white;">
-            <td style="padding: 2rem;">Username :</td>
-            <td style="padding: 2rem;"><%= list.username %></td>
+        <tr >
+            <td>Username :</td>
+            <td ><%= list.username %></td>
         </tr>
-        <tr style="border: 1px solid white;">
-            <td style="padding:2rem;">Email : </td>
-            <td style="padding:2rem;"><%= list.email %></td>
+        <tr >
+            <td>Email : </td>
+            <td ><%= list.email %></td>
         </tr>
-        <tr style="border: 1px solid white;">
-            <td style="padding:2rem;">Mobile Number : </td>
-            <td style="padding:2rem;"><%= list.mobile_No %></td>
+        <tr >
+            <td >Mobile Number : </td>
+            <td ><%= list.mobile_No1 %></td>
         </tr>
-        <tr style="border : 1px solid white;">
-            <td style="padding:2rem;">Vehicle Number : </td>
-            <td style="padding:2rem;"><%= list.Vehicle_No %></td>
+        <tr >
+            <td >Emerency Mobile Number1 : </td>
+            <td ><%= list.mobile_No2 %></td>
+        </tr>
+        <tr >
+            <td >Emergency Mobile Number2 : </td>
+            <td ><%= list.mobile_No3 %></td>
+        </tr>
+        <tr >
+            <td >Vehicle Number : </td>
+            <td ><%= list.Vehicle_No %></td>
         </tr>
     </table>
 
-<div style="display: flex; gap:1rem;justify-content:center;align-items:center;margin-top: 5rem;">
-
-<form action="/delete/<%= list._id %>?_method=DELETE" method="POST">
+<div>
+    <form action="/delete/<%= list._id %>?_method=DELETE" method="POST" style="display: inline;">
     <button class="btn btn-danger" style="width :16rem;margin-bottom:10rem;padding:1rem;font-size:1.4rem;font-weight:600;color:white;display:inline;">Delete Account</button>
 </form>
-
     <button class="btn btn-danger" style="width :16rem;margin-bottom:10rem;padding:1rem;font-size:1.4rem;font-weight:600;color:white;display:inline;"><a href="/update/<%= list._id %>" style="text-decoration: none;color:white;">Update Account</a></button>
 </div>
 
 
-    <h1 style="text-align:center;font-size:5rem;background-color:yellow;color:blue;width:100%;margin-top:7rem;">Find your destination.</h1>
+    <h1>Find your destination.</h1>
 
 <form action="/api/battery-status/new/<%= list._id %>">
-<div style="height:50rem;width:50rem;margin:auto;gap:1rem;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+<div style="margin-left:35rem;margin-top:5rem;">
     <div class="part1" style="display: flex;">
-        <label for="latitude" style="font-size:2.3rem;color:white;justify-content:center;align-items:center;margin-top:1rem;margin-right:2rem;"> Enter Latitude : </label>
-    <input type="text" id="latitude" name="latitude" style="font-size:2rem;border:2px solid black;border-radius:2rem;width:30rem;padding:2rem;margin-bottom:2rem;margin-left:1rem;">
+        <label for="latitude" style="font-size: 2rem;"> Enter Latitude : </label>
+        <input type="text" id="latitude" name="latitude" style="width: 20rem;padding:1rem;margin-left:2.5rem;margin-bottom:1rem;">
     </div>
-    <div class="part2" style="display: flex;">
-        <label for="longitude" style="font-size:2.3rem;color:white;justify-content:center;align-items:center;margin-top:1rem;margin-right:2rem;"> Enter Longitude : </label>
-    <input type="text" name="longitude" id="longitude"  style="font-size:2rem;border:2px solid black;border-radius:2rem;width:30rem;padding:2rem;margin-bottom:2rem;">
+    <div class="part2" style="display: flex; margin-top:1rem;">
+        <label for="longitude" style="font-size: 2rem;"> Enter Longitude : </label>
+    <input type="text" name="longitude" id="longitude" style="width: 20rem;padding:1rem;margin-left:1rem;margin-bottom:1rem;">
     </div>
-    <br>
-    <button class="btn btn-danger" style="margin-bottom: 8rem;padding:1rem;font-size:2rem;">start service</button>
+    <button class="btn btn-danger" style="margin-right: 45rem;margin-top:1rem;">start service</button>
 </div>
 </form>
 
 
-<h1 style="margin-top: 5rem;color:blue;background-color:yellow;padding:2rem;font-size:3rem;">Second Method of finding Destination</h1>
+<h1 style="margin-top: 8rem;">Second Method of finding Destination</h1>
 
 <form action="https://www.google.com/maps/search/?api=1&query=" target="_main"  class="destination_finding" style="margin-top: 5rem;">
-    <label for="destination" style="font-size: 2.2rem;margin-right:2rem;">Enter your destination : </label>
-    <input type="text" id="destination" placeholder="destination" name="destination" style="width : 50rem;height:7rem;padding:2rem;font-size:2rem;border-radius:3rem;">
-    <button style="padding:1rem;font-size:2rem;background-color:red;color:white;border-radius:4rem;">Search</button>
+    <label for="destination">Enter your destination : </label>
+    <input type="text" id="destination" placeholder="destination" name="destination">
+    <button style="border: none;padding:0.5rem;border-radius:2rem;font-size:1.4rem;background-color:red;color:white;">Search</button>
 </form>
 
-<h1 style="margin-top:15rem;font-size:4rem;color:blue;background-color:yellow;">Please give your precious review</h1>
+<h1 style="margin-top: 8rem;">Please give your precious review</h1>
 <form action="/review/<%= list._id %>" method="post" style="margin-top: 5rem;">
     <label for="review_input" style="font-size: 2rem;">Write your comment here : </label>
-    <input type="text" id="review_input" name="message" placeholder="enter your message" style="margin-left:3rem;width:50rem;height:10rem;border-radius:2rem;padding:4rem;font-size:2rem;">
+    <input type="text" id="review_input" name="message" placeholder="enter your message">
     <br><br><br>
     <label for="rate_number" style="font-size: 2rem;">Please give us rating b/w 1-5 : </label>
-    <input type="number" id="rate_number" name="rating" placeholder="give rating between 1-5" style="margin-left:1rem;;width:50rem;height:10rem;border-radius:2rem;padding:4rem;font-size:2rem;">
+    <input type="number" id="rate_number" name="rating" placeholder="give rating between 1-5">
     <br>
-    <button class="btn btn-danger" style="padding:1rem;font-size:2rem;width:17rem;margin-top:3rem;">Submit</button>
+    <button class="btn btn-danger">Submit</button>
     </form>
 </div>
 
 
-<h1 style="font-size: 4rem;text-align:center;margin-top:14rem; color:blue;background-color:yellow;">Review By Users</h1>
-    <div class="box">
+<h1 style="margin-top: 8rem;text-align:center;margin-bottom:4rem;">Review By Users</h1>
+    <div class="box" style="overflow-y: scroll;width : 60rem;height:40rem;margin : auto;margin-bottom:10rem;scrollbar-color:transparent black;scrollbar-width:thin;">
         <% for(let review of review_data) { %>
     <div class="card">
         <div class="card-body">
@@ -631,16 +441,16 @@ line-height: 1.6;
             <h6 class="card-subtitle mb-2 text-body-secondary" >Message : <%= review.message %></h6>
             <p class="card-text">Rating : <%= review.rating %></p>
             <form action="/delete/review/<%= review._id %>?_method=DELETE" method="post">
-                <button class="btn btn-warning">Delete</button>
+                <button class="btn btn-primary">Delete</button>
             </form>
         </div>
     </div>
     <% } %>
     </div>
 
-    <footer class="footer" style="margin-top: 10rem;background-color: rgb(1, 1, 33); color:white;">
+    <footer class="footer">
         <div style="" class="secure_cite">
-        <a href="#Safety" style="font-size: 2.9rem;color:white;text-decoration:underline;">Some website reference's for your Safety</a>
+        <a href="#Safety">Some website reference's for your Safety</a>
         <a href="https://www.darkreading.com/" target="_main">Visit Dark Reading</a></li>
         <a href="https://www.threatpost.com/" target="_main">Visit ThreatPost</a>
         <a href="https://thehackernews.com/" target="_main">Visit The Hacker News</a>
@@ -655,14 +465,14 @@ line-height: 1.6;
                 </ul>
         </div>
 
-        <div style="" class="secure_cite2">
-            <h1 style="color : white;font-size:3.2rem;margin-top:2rem;text-decoration:underline;">Authentication</h1>
+        <div class="secure_cite2">
+            <h1>Authentication</h1>
             <a href="/signup">Signup</a>
             <a href="/login">Log In</a>
             </div>
             <div class="secure_cite3">
-                <img style="border-radius: 50%;"  src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAMAAzAMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAAAQcFBggCBAP/xAA+EAABAwICBwQGBwgDAAAAAAABAAIDBAUGEQcSITFBUWETIiNxCDJSgaHBFBVCQ5Gx0TNTYnKywuHwJDSS/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAUEAwEC/8QAIREBAAIDAAICAwEAAAAAAAAAAAIDAQQREjEhYRMiQSP/2gAMAwEAAhEDEQA/ALxREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERARFBQSi1DG2P7Tg+poqeuL5ZqmQBzIiM4Y+Mh6dOK2mlqIaqmjqKaVssMjQ5j2HMOB4hB+yIiAiIgIiICIiAiIgIiICIiAiIgIigoIL2hwYXDWO4Z7SvSpP0iquqoKnDk9FUS08o+k9+N2qfusty0K2aWsZW9oYLkKhgy2VMTX5+/eg6pzRc6R6ecSNGT7baXddSQf3r8azTniqdhbBT2ymcdzo4XEj/04hB0dJIyNjpJHta0DMuccgFWOPNLlsskctHY3srrhlq6zdscR5k8fcqPvmNcR30atzutRLH+7DtRv4BeMM4SveJqhsNpoZJG/amcC2Ng5lyDHXW4Vd1r5a24zvqKmV2s+Rx39B0W7aN9JdbhF7aOs1qq0uP7LPN0PVvTorZwXons1it8rbpHHcq2pjLJpHt7jWne1g4ee/wAlXePNDlytUktbhvXr6HMn6P8AfRdP4h13oLxw7ia0YjpWVFprYpwd7M8nt8271mAQuKoZ6611WtDJPSVDTvBLHBblatL2MLfqsdXRVcY4VUQd8RkUHUijNc7t08YkDe9bbSSOOpIP71auj654pvdELpiOGkooJW+BSwxOa5w9txc45dAg3RFjrtebfaIRNcatlOxztUF53noF9cE8c8UcsUjZI3tDmvbucDuyXncd487jvH7IoUr16IiICIiAiIgIiICIh3IKS9JZmdPYZMtz5m/Bn6LQtFOEKDGVzraG4SzRdnAHxviIzBz6qx/SSjzsVnl9mqc38WZ/Jar6O0mrjCrZ7VGT+BCDZpdAVAT4F7qgP442/Je6fQFbQf8Ak3qrd0YxoVxawA2qdYINEs2ibCdqe2QUJqpG/aqHl3wW7U1NDSxNhpoWRRNGxjGgAL9cwpQQNyFSiDB33Cdjv7SLrbIJ3H7wtyd+IWjXLQXhypk1qOqraMey1wePirUzRBVmG9DFps96ir6urlr2Q95kMrAG63Ann5Le8Q3yksNAaioIzyyjiG955BecS4hpMP0LqmqJc/dHC31pDyCpS9XasvVc6srpA55GTWD1Y28m/rxWPZ2sV45j2xbO1irHMe3u+Xirvdcaqsdt3MYPVjHILYMAYqmtVRFbajOSilcGxgbTETy6LTw1znBrGlzicg0DMk8laeBMFCgEdzurA6rIzihO6EHiebvyWDW/LZZ5YT9b8tlvljLfW8PJe15Gwr0ra6IiICIiAiIgIiICHciIKn9IyEyYRoZBujrmk+RY4KvNAk3Z4/a0HZJTSD8launyIP0ezuyzLKiIjp3svmqc0LTiDSFbs9naNez8Qg6cudwpbZRvqq2VsUUYzLnf7vVZ1OkitN3bLDE36vadsRHecOefA9FmdKdnrq2lgrqZ75IaUHtIBt35d8DiQqr4ZZDzCmbd9kJcwlbuzZCfjj4w6HtlwprlRx1dJIJIpBmCF9gOao3BuJpsO1w1y59BKfGjHA+0Ov5q66Oqiq6dk9O8SRSDWa5u4ha9e/Fsfts1tjF0ft9CKAdijWWhpCVhcTYhpbBRGeofnK7ZFEDteV4xTiSlw/RmWY687wRDCDtefkOqpa63Osu9a+rr5deV2wD7LB7LRwCx7Oz+PHMe2La28VY8ce03m61V4r31lY8ueT3W8GDkF8jGue9rI2lz3HVDWjMk8lDGOke2ONpc9xDWtaMyTyVs4HwY20htwuTWvrnNzYzhCD81NqqnsT7lLppnsT7l5wJgtttay4XNodWkZsjO0Q/5W8huSwl1xPQW29W2zPd2lfXy6scTD6jQCS53IbFnVarqjXjmF2uqNeOYFKIujoIiICIiAiIgIiICIiDTdMEAn0d3gEZ6kYePcQVzlo7qGUmOLLM85NFU1uf82z5rqXGlGbhhO70jRm6akka0ddU5Lj+3VJoa+lq2gl0EzJQOeqQfkg7Wc3Xbk7cqo0gYQNukfdLez/iOOc0bR+zPMdFatLI2enilac2vYHA9MlM0TZWOZINZjgQ5pGwhcbqY2x5lxvojdHmXOHXJbbgXFrrJUNo61xNBId/7o8/JRjrCb7HU/S6Npdb5Dw+6cdw8uS1PhlwUb99eaF/pr2fDo6KRksbXxuDmOGYI4rC4rxLS4fo9d/iVDx4UQO13XyVbYXxvVWGifRyRGqhAPYBz8jGeX8q165V9Vc6ySrrZTJNJx4AchyC3Wb2PD49qFm/Hw/X2m6XGqutZJV1spfI/Z0aOQXzxxyTSNjhY6SR7tVrWjMkpFFJNKyGBhklecmMbtLirdwPg2OzMbW1wbJcHt8xEOQ69VippnfLuWGmmexPuXjA+DWWiIVtwa2SvcO6N4iB4Dr1X0aSsXDBuHjXMi7SpleIoWk5DWIO0+WS2zLIZZqk/SSrtWGy28fafJM7pkAB/UVarrjXjmF6uuNcfHDV9EdZVX3SlT19xmdPUFksr3u8tmXIbV0uudPR1ozLi6tq9XuwUhbnyLnDL+krotdH2IiICIiAiIgIiICIiAiIg8StD43NP2gQuNcS2w2bENwt7m5CnnexrSdurn3fhkuzSue/SDw66kvdNfIWeDVt7OUjg9v6j8kFraKrq27YCtEwcXPigFPITv1md35A+9baufvR+xSKC7VGHatwEVb4lOSdglA2j3j4jqugRtQfPWUsNXTyU9REJIZGlrmkZghUrjHDMmHKwage+hlPhSHbq/wAJPNXlkvjulvprjSS0tYwSQyN1SD/u9Z9iiNsftm2dfF0ftzx5hfpDFJUTRwU8T5ZZDqtYwZknyWbvmFK+1XZtDFDJUMlPgPY094deXVWPgrCEVig+kVOrLcJB3nAbIx7I/VS6tSc5cz/EmnTnKeY5/j8sE4Oiskf0usAkr3jbyjHIdeq3EDIb1AaMl6CswrjCPjFcrrjXHxiLmPTrdG3HHs0Ebi5lDAyn6B21zv6svcug8XX+nwxh+sutVkRAzw2E5do8+q33lcivdVXm6F5JlrKybM83Pcf8r7fa9PRztRp7FcLm9mRq5xG082s/yXK4FhcH2VmH8OUFsZvgiAeebuKzSAiIgIiICIiAiIgIiICIiAsHjLDsGJsPVVqnA8Rucbz9h43H8VnFB3IOL6mCusN5fDKHwV1FLkeBY5p2LqDRpjWnxfY2yOc1lwgAZUxZ7c/aHQrWtMuj036m+u7RFrXOBvjRtH/YYP7hwVF4fvtxwzdmXC3SOhqI3ZOYdzxxa4ckHZIQrTMBaQrZi6mEbHtp7ixviUrztPVvMLc+KCNRueeQUgAKckQF+ckjY2ufI5rWNBJc45AL862rgoaaSpq5mQwRtLnyPOQAXP8ApR0qOvjJLTYHvioCSJZ9zpug5N/NBjdMWORie6/V9vkJtlG4hrhulfuLvLgFmNAuEDXXF2I62LKmpiWU2sPXk4keS0nAODa3GN3ZSwAx0kZBqajLZG3kObjwXVdpttLaLfT2+giEVPTsDI2Abhz8yg+zJSiICIiAiIgIiICIiAiIgIiICIiDy4BVRpQ0Ux3x0l3w81kVxO2WA7GT9Ryd+atlEHFU0VfZrgY5WT0dbA7cc2OYVZGFNNd6tTWU97hbc6cDLtA7UlaPPcfersxXg6yYqg7O7UjXSgdydnde3yKpjEmg+70JdLYaplfDnsjk7kgH5FBZNq0wYOroC+Wvkontbm6OpicD5AjMFa9iHTraqdj48P0M9bKR3ZZ/DjHu9Y+WzzVKXDDV8t0whrbRWxSFwA8FxBPIEbCs3YNGWKr25vZW19LC7b2tV3AB5b/ggx+KsZ33FMxddq0uiHqwR92NvuHzWTwDo7u2L52Pax1LbWkdpVPado5MHE/BWvg/QrabS9lTfJfrKobtEeWrE33cVaMEUcETIoY2xxsGTWNGQaOgQY7DmH7fhu1x2+1wdnEzaTvc88yeJWVyHJSiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIg8uaDvAPmF6CIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiHYgIozTMIJRRmFKAijNSgIiICKM0zQSijWGeSZhBKKC4DehcBvQSigEE7FKAiIgIiIP/Z" alt="website_logo">
-                <p class="copyright" style="color:green;">
+                <img  src="data:image/jpeg;base64,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" alt="website_logo">
+                <p class="copyright">
                     &copy devine debuggers | All Rights Reserved
                 </p>
             </div>

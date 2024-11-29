@@ -35,22 +35,8 @@
         font-size: 60%;
         overflow-x: hidden;
     }
-    .header {
-        width: 100%;
-        padding: 6rem;
-        background-color: rgb(1, 6, 30);
-        backdrop-filter: blur(10px);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 5;
-        animation: slidefromtop 1s ease forwards;
-        opacity: 2;
-        text-align: center;
-        border-bottom: 1px solid whitesmoke;
-        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFkdgMZsc3e1EJS1WN34RGr0TO905c0ohMew&s');
-        box-sizing: border-box;
-    }
+
+
     .container {
         display: flex;
         flex-direction: column;
@@ -534,35 +520,424 @@ line-height: 1.6;
     }
 </style>
 
+
+<style>
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Header */
+    .header {
+        background-color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 3rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .navbar a {
+        color: black;
+        font-weight: 600;
+        font-size: 1.9rem;
+        padding: 0.5rem;
+        transition: color 0.3s;
+    }
+
+    .navbar a:hover,.navbar  {
+        color: #4CAF50;
+    }
+
+    .logo {
+        font-size: 2.8rem;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .logo span {
+        color: #4CAF50; /* Green color for brand */
+    }
+
+    .logout-btn {
+        background-color: yellow;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        font-size: 1.5rem;
+        transition: background-color 0.3s;
+    }
+
+    .logout-btn:hover {
+        background-color: #ffcc00;
+    }
+
+    /* Search Bar */
+    .search_bar {
+        width: 100%;
+        padding: 0.7rem;
+        border-radius: 0.5rem;
+        border: 1px solid #ccc;
+        font-size: 1.6rem;
+    }
+
+    .search_bar:focus {
+        outline: none;
+        border-color: #4CAF50;
+    }
+
+    /* Ride Section */
+    .Ride {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 2rem;
+        background-color: #fff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .Ride-text {
+        flex: 1;
+        text-align: left;
+    }
+
+    .Ride-text h1 {
+        font-size: 3.5rem;
+        color: #333;
+    }
+
+    .Ride-text h6 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        color: #4CAF50;
+    }
+
+    .Ride-text button {
+        font-size: 2rem;
+        padding: 1rem 2rem;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .Ride-text button:hover {
+        background-color: #45a049;
+    }
+
+    .Ride-img img {
+        width: 100%;
+        max-width: 35rem;
+        border-radius: 10%;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Footer */
+    .footer {
+        background-color: #010121;
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .secure_cite a {
+        color: #4CAF50;
+        font-size: 1.8rem;
+        display: block;
+        margin-bottom: 1rem;
+        transition: color 0.3s;
+    }
+
+    .secure_cite a:hover {
+        color: #ffcc00;
+    }
+
+    .secure_cite2 h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: #4CAF50;
+    }
+
+    .secure_cite2 a {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: white;
+    }
+
+    .secure_cite3 img {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 10%;
+        margin-bottom: 1rem;
+    }
+
+    .copyright {
+        font-size: 1.6rem;
+        color: #4CAF50;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .Ride {
+            flex-direction: column;
+        }
+
+        .Ride-text h1 {
+            font-size: 2.5rem;
+        }
+
+        .Ride-text h6 {
+            font-size: 1.5rem;
+        }
+
+        .Ride-text button {
+            font-size: 1.6rem;
+            padding: 0.8rem 1.5rem;
+        }
+
+        .Ride-img img {
+            max-width: 100%;
+            border-radius: 0;
+        }
+    }
+</style>
+
+<style>
+    body { margin: 0; padding: 0;}
+    #map {
+        width: 90rem;
+        margin: 5rem auto;
+        border-radius: 10%;
+    }
+    .custom-marker {
+        width: 15px;
+        height: 15px;
+        background-color: red;
+        border-radius: 50%; /* Make it circular */
+        border: 2px solid white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+
+<style>
+    /* Global Styling for the Page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Heading (Registered User's) */
+h1 {
+    color: blue;
+    font-size: 5rem;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 4rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content Section */
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    padding: 3rem 2%;
+    margin-top: 3rem;
+}
+
+/* Card Styling */
+.card {
+    width: 35rem;
+    background-color: #222;
+    color: whitesmoke;
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styling */
+.card-img-top {
+    height: 25rem;
+    width: 35rem;
+    object-fit: cover;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Card Body */
+.card-body {
+    font-size: 2rem;
+    color: whitesmoke;
+    padding: 1.5rem;
+}
+
+/* Card Title */
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: whitesmoke;
+    margin-bottom: 1rem;
+}
+
+/* Card Text (Vehicle No) */
+.card-text {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+/* Button Styling */
+.btn {
+    background-color: #ff8c00;
+    color: whitesmoke;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ff6700;
+    transform: scale(1.05);
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+    .main {
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .card {
+        width: 90%;
+        padding: 2rem;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: auto;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .card-body {
+        font-size: 1.8rem;
+    }
+
+    .card-title {
+        font-size: 1.8rem;
+    }
+
+    .card-text {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .card {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    .card-body {
+        font-size: 1.6rem;
+    }
+
+    .card-title {
+        font-size: 1.6rem;
+    }
+
+    .card-text {
+        font-size: 1.3rem;
+    }
+}
+
+</style>
+
+
+
 </head>
 <body style="background-color: rgb(1, 1, 28);color:white;">
-        <header class="header">
-            <div class="container">
-                <div>
-                    <nav class="navbar">
-                        <a href="/home" class="active" style="color: black; font-weight:600;font-size:3rem;padding:0.2rem;">Home</a>
-                        <a href="/service" style="color: black; font-weight:600;font-size:3rem;">Create section</a>
-                        <a href="/safety" style="color: black; font-weight:600;font-size:3rem;">Battery_Level</a>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" style="color:black;" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Signup/login</a>
-                            <ul class="dropdown-menu" style="width : 20rem;height: 20rem; color:black;text-align:center;">
-                            <li><a class="dropdown-item" href="/signup" style="color:black;margin-top:1.2rem;">Sign up</a></li>
-                            <li><a class="dropdown-item" href="/login" style="color:black;margin-top:1.2rem;">Login</a></li>
-                            <li><a class="dropdown-item" href="/logout" style="color:black;margin-top:1.2rem;">Logout</a></li>
-                            </ul>
-                        </li>
-                    </nav>
-                </div>
-                <div><a href="/home" class="logo"><span style="color: black;">SAFE CITY</span></a>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="/logout" style="color: black; font-size:1.5rem;background-color:yellow;padding:2rem;border-radius:2rem;">Logout</a></div>
-                <div>
-                    <form action="/">
-                        <input type="text" class="search_bar" placeholder="search anything">
-                    </form>
-                </div>
-            </div>
-            </header>
+    <header class="header">
+        <div>
+            <nav class="navbar">
+                <a href="/home" style="font-size: 2rem;color:green;">Home</a>
+                <a href="/service">Create section</a>
+                <a href="/safety">Battery_Level</a>
+                <a href="/signup">Sign up</a>
+                <a href="/logout">Logout</a>
+            </nav>
+        </div>
+
+        <div>
+            <a href="/home" class="logo"><span>SAFE CITY</span></a>
+        </div>
+
+        <div>
+            <form action="/">
+                <input type="text" class="search_bar" placeholder="Search anything">
+            </form>
+        </div>
+    </header>
 
 
         <% if(message.length != 0) { %>
@@ -574,7 +949,7 @@ line-height: 1.6;
 
 
 
-    <h1 style="color:blue;background-color:yellow;font-size : 5rem; padding:1rem;text-align:center;margin-top:4rem;">Registered User's</h1>
+    <h1 style="color:blue;font-size : 5rem; padding:1rem;text-align:center;margin-top:4rem;">Registered User's</h1>
     <div class="main">
     <% for(let list of data) { %>
         <div class="card text-center" style="width:40rem;border:none; padding:3rem;background-color:black;">

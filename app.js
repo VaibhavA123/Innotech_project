@@ -182,7 +182,7 @@ const User = mongoose.model("User",userSchema);
 
 
 app.get("/home",(req,res) => {
-    res.render("Home.ejs");
+    res.render("app.ejs");
 });
 
 
@@ -464,6 +464,12 @@ app.get("/safety",async (req,res) => {
             res.status(500).send("An error occurred while adding the review");
         }
     });
+
+
+
+app.get("/app2",(req,res) => {
+    res.render("app.ejs");
+});
 
 
 
