@@ -79,7 +79,11 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
-        console.log('User disconnected:', socket.id);
+        console.log('User disconnected : ',socket.id);
+        // console.log(socket);
+        if (socket.user) {
+            console.log('User disconnected :',socket.id,'User email:', socket.user.email);
+        }
     });
 });
 
@@ -555,6 +559,42 @@ app.get("/app2",(req,res) => {
     res.render("app.ejs");
 });
 
+
+const driverSchema = new mongoose.Schema({
+    driver_name : {
+        type : String,
+        required : true,
+    },
+    passenger_name : {
+        type : String,
+        required: true,
+    },
+    passenger_destination : {
+        type : String,
+        required : true,
+    },
+    passenger_aadhar : {
+        type : String,
+        required : true,
+    },
+});
+
+const Driver = mongoose.model("Driver",driverSchema);
+
+
+app.get("/driver",(req,res) => {
+    const data = req.flash("saved");
+    res.render("driver.ejs",{data});
+});
+
+app.post("/driver",async (req,res) => {
+    let {driver_name, passenger_aadhar,passenger_destination,passenger_name} = req.body;
+    console.log(req.body);
+    req.flash("saved","Data saved successfully.Go back to home");
+    let data = new Driver({driver_name : driver_name,passenger_aadhar : passenger_aadhar, passenger_destination : passenger_destination,passenger_name : passenger_name});
+    await data.save();
+    res.redirect("/driver");
+});
 
 
 app.use("*",(req,res) => {
