@@ -754,39 +754,6 @@ arr23.forEach((location) => {
 });
 
 
-navigator.geolocation.watchPosition((position) => {
-    const RADIUS = 0.0001;
-    arr23.forEach((location) => {
-                if(position.coords.latitude == 28.9731759 && position.coords.longitude == 77.686332) {
-                    fetch("https://innotech-project.onrender.com/flash_message",{
-                        method : "POST",
-                        headers : {
-                            'Content-Type' : 'application/json'
-                        },
-                        body : JSON.stringify({message : "Be careful at this place.This is danger zone."})
-                    })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error: ${response.status}`);
-                        }
-                        console.log("Alert sent successfully.");
-                    })
-                        .catch((error) => {
-                        console.error("Error sending alert:", error.message);
-                    });;
-                }
-    });
-},
-(error) => {
-    console.error("Error getting location:", error.message);
-},
-{
-    enableHighAccuracy: true, // Use high-accuracy mode if available
-    maximumAge: 0, // Prevent caching
-    timeout: 5000, // Timeout after 5 seconds if no position is found
-});
-
-
 
 const marker = new mapboxgl.Marker({color : "green"})
 .setLngLat([data[0].longitude,data[0].latitude])
@@ -813,10 +780,32 @@ data.shift();
 let userMarker = new mapboxgl.Marker({color:"yellowgreen"});
 navigator.geolocation.watchPosition(position => {
     const {latitude,longitude} = position.coords;
+    console.log(position.coords);
 
     userMarker
     .setLngLat([longitude,latitude])
     .addTo(map);
+
+    if(latitude == 28.9731759 && longitude == 77.686332) {
+        fetch("https://innotech-project.onrender.com/flash_message",{
+            method : "POST",
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body : JSON.stringify({message : "Be careful at this place.This is danger zone."})
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+            console.log("Alert sent successfully.");
+        })
+            .catch((error) => {
+            console.error("Error sending alert:", error.message);
+        });
+    }
+
+
 
     map.setCenter([longitude, latitude]);
 },
