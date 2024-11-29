@@ -755,15 +755,25 @@ arr23.forEach((location) => {
 
 
 navigator.geolocation.watchPosition((position) => {
+    const RADIUS = 0.0001;
     arr23.forEach((location) => {
-                if(position.coords.latitude == location.latitude && position.coords.longitude == location.longitude) {
+                if( Math.abs(position.coords.latitude - location.latitude) <= RADIUS && Math.abs(position.coords.longitude - location.longitude) <= RADIUS) {
                     fetch("https://innotech-project.onrender.com/flash_message",{
                         method : "POST",
                         headers : {
                             'Content-Type' : 'application/json'
                         },
                         body : JSON.stringify({message : "Be careful at this place.This is danger zone."})
-                    });
+                    })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error: ${response.status}`);
+                        }
+                        console.log("Alert sent successfully.");
+                    })
+                        .catch((error) => {
+                        console.error("Error sending alert:", error.message);
+                    });;
                 }
     });
 },
@@ -800,10 +810,15 @@ data.shift();
 });
 
 
+let userMarker = new mapboxgl.Marker({color:"yellowgreen"});
 navigator.geolocation.watchPosition(position => {
-    new mapboxgl.Marker({color:"yellowgreen"})
-    .setLngLat([position.coords.longitude,position.coords.latitude])
+    const {latitude,longitude} = position.coords;
+
+    userMarker
+    .setLngLat([longitude,latitude])
     .addTo(map);
+
+    map.setCenter([longitude, latitude]);
 },
     (error) => {
         console.error("Error getting location:", error.message);
