@@ -466,6 +466,55 @@ app.get("/safety",async (req,res) => {
     });
 
 
+    const switchSchema = new mongoose.Schema({
+        username : {
+            type : String,
+            required : true,
+        },
+        emergency1 : {
+            type : Number,
+            required : true,
+        },
+        emergency2 : {
+            type : Number,
+            required : true,
+        },
+        latitude : {
+            type : String,
+            required: true,
+        },
+        longitude : {
+            type : String,
+            required : true,
+        },
+    });
+
+const SwitchedOFF = mongoose.model("SwitchedOFF",switchSchema);
+
+app.post("/switched_off", async (req,res) => {
+    let _id = req.body._id;
+    let latitude = req.body.latitude;
+    let longitude = req.body.longitude;
+    let data = await User.findById(_id);
+    let newData = new SwitchedOFF({username : data.username,emergency1 : data.mobile_No2,emergency2 : data.mobile_No3,latitude : latitude, longitude : longitude});
+    await newData.save();
+    res.status(200).json({"Success":"true"});
+});
+
+
+app.delete("/switched_off/:_id",async(req,res) => {
+    let { _id } = req.params;
+    let data = await SwitchedOFF.findByIdAndDelete(_id);
+    console.log(data);
+    res.redirect("/switched_off");
+});
+
+app.get("/switch_off",async (req,res) => {
+    let data = await SwitchedOFF.find({});
+    res.render("switch_off.ejs",{data});
+});
+
+
 
 app.get("/app2",(req,res) => {
     res.render("app.ejs");
